@@ -113,15 +113,16 @@ class HopByHopSwitch(app_manager.RyuApp):
         pkt_tcp = pkt.get_protocol(tcp.tcp)
         pkt_ipv4 = pkt.get_protocol(ipv4.ipv4)
         if pkt_tcp != None:
-            if pkt_tcp.has_flags(tcp.TCP_SYN) and not pkt_tcp.has_flags(tcp.TCP_ACK) and dst_dpid == datapath.id :
+            #X =1 T=1 più di 1 pacchetto al secondo
+            if pkt_tcp.has_flags(tcp.TCP_SYN) and dst_dpid == datapath.id :
                 t = time.time()
-                print('T:',t,'SYN to MAC_DST: ',destination_mac,'TCP Port: ',pkt_tcp.dst_port)
+                print('T:',t,'  ',pkt_ipv4.dst,':',pkt_tcp.dst_port)
                 i = 1
                 delta_t = 0
                 d[destination_mac].append(t)
                 l = len(d[destination_mac])
                 # i = SYN ricevuti in un periodo di tempo delta_t
-                while l >= 2 and delta_t < T and i < X :
+                while l >= 2 and delta_t < T and i <= X :
                     delta_t = delta_t + d[destination_mac][l-1]-d[destination_mac][l-2]
                     l = l-1
                     i = i+1
@@ -133,9 +134,9 @@ class HopByHopSwitch(app_manager.RyuApp):
                 if i > X  and delta_t < T:
                    print('KO\n')
                    return
-                
+                print('OK\n')
         # altrimenti inoltra il pacchetto corrente
-        print('OK\n')
+        
         actions = [ parser.OFPActionOutput(output_port) ]
         out = parser.OFPPacketOut(
             datapath=datapath,
