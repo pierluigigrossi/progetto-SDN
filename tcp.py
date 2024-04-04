@@ -121,12 +121,12 @@ class HopByHopSwitch(app_manager.RyuApp):
                     return
                 i = 1
                 delta_t = 0
-                l=len(d[destination_mac])
-                if l>1  :
+                l = len(d[destination_mac])
+                if l > 1  :
                     if t-d[destination_mac][l-1] > T :
                         del d[destination_mac]
                 d[destination_mac].append(t)
-                print("lungehzza",l )
+                l = len(d[destination_mac])
                 while l >= 2 and delta_t < T and i > X :
                     delta_t = delta_t + d[destination_mac][l-1]-d[destination_mac][l-2]
                     l = l-1
