@@ -127,13 +127,11 @@ class HopByHopSwitch(app_manager.RyuApp):
                         del d[destination_mac]
                 d[destination_mac].append(t)
                 l = len(d[destination_mac])
-                while l >= 2 and delta_t < T and i > X :
+                while l >= 2 and delta_t < T and i < X :
                     delta_t = delta_t + d[destination_mac][l-1]-d[destination_mac][l-2]
                     l = l-1
                     i = i+1
-                print("delta", delta_t)
-                print("i:", i)
-                if i > X  and delta_t < T:
+                if i > X  and delta_t > T:
                    print('KO\n')
                    return
                 print('OK\n')
