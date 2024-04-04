@@ -115,7 +115,7 @@ class HopByHopSwitch(app_manager.RyuApp):
         if pkt_tcp != None:
             if pkt_tcp.has_flags(tcp.TCP_SYN) and not pkt_tcp.has_flags(tcp.TCP_ACK) and dst_dpid == datapath.id :
                 t = time.time()
-                print('T:',t,'SYN to IP_DST: ',pkt_ipv4.dst'TCP Port: ',pkt_tcp.dst_port)
+                print('T:',t,'SYN to MAC_DST: ',destination_mac,'TCP Port: ',pkt_tcp.dst_port)
                 if X <= 1 :
                     print('KO\n')
                     return
