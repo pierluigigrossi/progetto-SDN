@@ -120,19 +120,22 @@ class HopByHopSwitch(app_manager.RyuApp):
                 delta_t = 0
                 d[destination_mac].append(t)
                 l = len(d[destination_mac])
+                # i = SYN ricevuti in un periodo di tempo delta_t
                 while l >= 2 and delta_t < T and i < X :
                     delta_t = delta_t + d[destination_mac][l-1]-d[destination_mac][l-2]
                     l = l-1
                     i = i+1
                 l = len(d[destination_mac])
+                #tieni nel dizionario solo SYN nell'intervallo di tempo di osservazione 0-T
                 if  l > 0  and delta_t > T :
                     del d[destination_mac]
+                #scarta pacchetto oltre soglia, più di X SYN in tempo minore di T
                 if i > X  and delta_t < T:
                    print('KO\n')
                    return
-                print('OK\n')
-        # inoltra il pacchetto corrente
-        
+                
+        # altrimenti inoltra il pacchetto corrente
+        print('OK\n')
         actions = [ parser.OFPActionOutput(output_port) ]
         out = parser.OFPPacketOut(
             datapath=datapath,
