@@ -127,7 +127,7 @@ class HopByHopSwitch(app_manager.RyuApp):
                     l = l-1
                     i = i+1
                 #tieni nel dizionario solo SYN nell'intervallo di tempo di osservazione 0-T
-                while  l > 0  and (i > X or delta_t > T):
+                while  l >= 2  and (i > X or delta_t > T):
                     del d[destination_mac][l-1]
                     l = l-1
                 #scarta pacchetto oltre soglia, più di X SYN in tempo minore di T
