@@ -137,7 +137,7 @@ class HopByHopSwitch(app_manager.RyuApp):
                 d[destination_mac].append(t)
                 l = len(d[destination_mac])
                 # i = SYN ricevuti in un periodo di tempo delta_t
-                while l >= 2 and delta_t < T and i <= X :
+                while l >= 2 and delta_t <= T and i <= X :
                     delta_t = delta_t + d[destination_mac][l-1]-d[destination_mac][l-2]
                     l = l-1
                     i = i+1
