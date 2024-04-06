@@ -162,25 +162,25 @@ class HopByHopSwitch(app_manager.RyuApp):
             data=msg.data
         )
         datapath.send_msg(out)
-
-        # aggiungi la regola
-        match = parser.OFPMatch(
-            eth_dst=destination_mac
+        if pkt_tcp is None :
+            # aggiungi la regola
+            match = parser.OFPMatch(
+                eth_dst=destination_mac
+                )
+            inst = [
+                parser.OFPInstructionActions(
+                    ofproto.OFPIT_APPLY_ACTIONS,
+                    [ parser.OFPActionOutput(output_port) ]
+                )
+            ]
+            mod = parser.OFPFlowMod(
+                datapath=datapath,
+                priority=10,
+                match=match,
+                instructions=inst,
+                buffer_id=msg.buffer_id
             )
-        inst = [
-            parser.OFPInstructionActions(
-                ofproto.OFPIT_APPLY_ACTIONS,
-                [ parser.OFPActionOutput(output_port) ]
-            )
-        ]
-        mod = parser.OFPFlowMod(
-            datapath=datapath,
-            priority=10,
-            match=match,
-            instructions=inst,
-            buffer_id=msg.buffer_id
-        )
-        datapath.send_msg(mod)
+            datapath.send_msg(mod)
 
         return
     def proxy_arp(self, msg):
