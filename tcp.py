@@ -132,13 +132,12 @@ class HopByHopSwitch(app_manager.RyuApp):
             #X =1 T=1 più di 1 pacchetto al secondo
             if pkt_tcp.has_flags(tcp.TCP_SYN) and src_dpid == datapath.id :
                 t = time.time()
-                print('T:',t,'  ',pkt_ipv4.dst,':',pkt_tcp.dst_port)
                 i = 1
                 delta_t = 0
                 d[destination_mac].append(t)
                 l = len(d[destination_mac])
                 # i = SYN ricevuti in un periodo di tempo delta_t
-                while l >= 2 and delta_t < T and i < X :
+                while l >= 2 and delta_t < T and i <= X :
                     delta_t = delta_t + d[destination_mac][l-1]-d[destination_mac][l-2]
                     l = l-1
                     i = i+1
@@ -146,11 +145,12 @@ class HopByHopSwitch(app_manager.RyuApp):
                 while  l >= 2  and (i > X or delta_t > T):
                     del d[destination_mac][l-1]
                     l = l-1
+                print(pkt_ipv4.dst,':',pkt_tcp.dst_port,'Elapsed time:',delta_t)
                 #scarta pacchetto oltre soglia, più di X SYN in tempo minore di T
                 if i > X  and delta_t < T:
-                   print('KO\n')
+                   print('KO', i, 'SYNs in', delta_t,'\n',)
                    return
-                print('OK\n')
+                print('OK')
         
         # inoltra il pacchetto corrente
         actions = [ parser.OFPActionOutput(output_port) ]
