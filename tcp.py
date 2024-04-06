@@ -45,6 +45,19 @@ class HopByHopSwitch(app_manager.RyuApp):
             instructions=inst
         )
         datapath.send_msg(mod)
+        #tutti i SYN al controllore
+        match = parser.OFPMatch(
+            eth_type=0x0800, 
+            ip_proto=6, 
+            tcp_flags=0x002
+        )
+        mod = parser.OFPFlowMod(
+            datapath=datapath,
+            priority=20,
+            match = match,
+            instructions=inst
+        )
+        datapath.send_msg(mod)
 
     # trova switch destinazione e porta dello switch
     def find_destination_switch(self,destination_mac):
@@ -92,9 +105,12 @@ class HopByHopSwitch(app_manager.RyuApp):
             return
         
         destination_mac = eth.dst
+        source_mac = eth.src
 
         # trova switch destinazione
         (dst_dpid, dst_port) = self.find_destination_switch(destination_mac)
+        # trova switch sorgente
+        (src_dpid, src_port) = self.find_destination_switch(source_mac)
 
         # host non trovato
         if dst_dpid is None:
@@ -112,9 +128,9 @@ class HopByHopSwitch(app_manager.RyuApp):
         #blocco TCP
         pkt_tcp = pkt.get_protocol(tcp.tcp)
         pkt_ipv4 = pkt.get_protocol(ipv4.ipv4)
-        if pkt_tcp != None:
+        if pkt_tcp is not None:
             #X =1 T=1 più di 1 pacchetto al secondo
-            if pkt_tcp.has_flags(tcp.TCP_SYN) and dst_dpid == datapath.id :
+            if pkt_tcp.has_flags(tcp.TCP_SYN) and src_dpid == datapath.id :
                 t = time.time()
                 print('T:',t,'  ',pkt_ipv4.dst,':',pkt_tcp.dst_port)
                 i = 1
@@ -135,8 +151,8 @@ class HopByHopSwitch(app_manager.RyuApp):
                    print('KO\n')
                    return
                 print('OK\n')
-        # altrimenti inoltra il pacchetto corrente
         
+        # inoltra il pacchetto corrente
         actions = [ parser.OFPActionOutput(output_port) ]
         out = parser.OFPPacketOut(
             datapath=datapath,
@@ -147,25 +163,24 @@ class HopByHopSwitch(app_manager.RyuApp):
         )
         datapath.send_msg(out)
 
-        if dst_dpid != datapath.id :
-         # instrado diretto switch se non sono sull'aparatto a cui è connessa la dst
-            match = parser.OFPMatch(
-                eth_dst=destination_mac
-                )
-            inst = [
-                parser.OFPInstructionActions(
-                    ofproto.OFPIT_APPLY_ACTIONS,
-                    [ parser.OFPActionOutput(output_port) ]
-                )
-            ]
-            mod = parser.OFPFlowMod(
-                datapath=datapath,
-                priority=10,
-                match=match,
-                instructions=inst,
-                buffer_id=msg.buffer_id
+        # aggiungi la regola
+        match = parser.OFPMatch(
+            eth_dst=destination_mac
             )
-            datapath.send_msg(mod)
+        inst = [
+            parser.OFPInstructionActions(
+                ofproto.OFPIT_APPLY_ACTIONS,
+                [ parser.OFPActionOutput(output_port) ]
+            )
+        ]
+        mod = parser.OFPFlowMod(
+            datapath=datapath,
+            priority=10,
+            match=match,
+            instructions=inst,
+            buffer_id=msg.buffer_id
+        )
+        datapath.send_msg(mod)
 
         return
     def proxy_arp(self, msg):
