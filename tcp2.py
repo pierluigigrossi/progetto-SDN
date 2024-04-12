@@ -133,23 +133,19 @@ class HopByHopSwitch(app_manager.RyuApp):
                 delta_t = 0
                 i = 1
                 if destination_mac not in d :
-                    d[destination_mac] ={
-                        'n_syn': 1,
-                        'current_syn': t,
-                        'last_syn': 0,
-                        'delta_t': 0
-                    }
+                    #[n_syn,current_syn,last_syn,delta_t]
+                    d[destination_mac] =[1,t,0,0]
                 else :
-                    d[destination_mac]['n_syn'] = d[destination_mac]['n_syn']+1
-                    i = d[destination_mac]['n_syn']
-                    d[destination_mac]['last_syn'] = d[destination_mac]['current_syn']
-                    d[destination_mac]['current_syn'] = t
-                    d[destination_mac]['delta_t'] =  t - d[destination_mac]['last_syn'] + d[destination_mac]['delta_t']
-                    delta_t = d[destination_mac]['delta_t']
+                    d[destination_mac][0] = d[destination_mac][0]+1
+                    i = d[destination_mac][0]
+                    d[destination_mac][2] = d[destination_mac][1]
+                    d[destination_mac][1] = t
+                    d[destination_mac][3] =  t - d[destination_mac][2] + d[destination_mac][3]
+                    delta_t = d[destination_mac][3]
                         #reset counter oltre il tempo
                     if delta_t >= T :
-                        d[destination_mac]['n_syn'] = 1
-                        d[destination_mac]['delta_t'] = 0
+                        d[destination_mac][0] = 1
+                        d[destination_mac][3] = 0
                     
             print(pkt_ipv4.dst,':',pkt_tcp.dst_port,'Elapsed time:',delta_t)
 
