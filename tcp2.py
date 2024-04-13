@@ -130,8 +130,6 @@ class HopByHopSwitch(app_manager.RyuApp):
             (src_dpid, src_port) = self.find_destination_switch(source_mac)
             if pkt_tcp.has_flags(tcp.TCP_SYN) and src_dpid == datapath.id :
                 t = time.time()
-                delta_t = 0
-                i = 1
                 if destination_mac not in d :
                     #[n_syn,current_syn,last_syn,delta_t]
                     d[destination_mac] =[1,t,0,0]
@@ -143,9 +141,11 @@ class HopByHopSwitch(app_manager.RyuApp):
                     d[destination_mac][3] =  t - d[destination_mac][2] + d[destination_mac][3]
                     delta_t = d[destination_mac][3]
                         #reset counter oltre il tempo
-                    if delta_t >= T :
+                    if delta_t > T :
                         d[destination_mac][0] = 1
                         d[destination_mac][3] = 0
+                i = d[destination_mac][0]
+                delta_t = d[destination_mac][3]
                     
             print(pkt_ipv4.dst,':',pkt_tcp.dst_port,'Elapsed time:',delta_t)
 
