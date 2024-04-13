@@ -130,6 +130,8 @@ class HopByHopSwitch(app_manager.RyuApp):
             (src_dpid, src_port) = self.find_destination_switch(source_mac)
             if pkt_tcp.has_flags(tcp.TCP_SYN) and src_dpid == datapath.id :
                 t = time.time()
+                i = 1
+                delta_t = 0
                 if destination_mac not in d :
                     #[n_syn,current_syn,last_syn,delta_t]
                     d[destination_mac] =[1,t,0,0]
@@ -144,11 +146,10 @@ class HopByHopSwitch(app_manager.RyuApp):
                     if delta_t > T :
                         d[destination_mac][0] = 1
                         d[destination_mac][3] = 0
-                i = d[destination_mac][0]
-                delta_t = d[destination_mac][3]
                     
             print(pkt_ipv4.dst,':',pkt_tcp.dst_port,'Elapsed time:',delta_t)
-
+            i = d[destination_mac][0]
+            delta_t = d[destination_mac][3]
                 
                 #scarta pacchetto oltre soglia, più di X SYN in tempo minore di T
             if i > X  and delta_t <= T:
