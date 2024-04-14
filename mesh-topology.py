@@ -2,7 +2,7 @@
 # invocare con mn --custom mesh-topology.py --topo MeshTopo
 
 from mininet.topo import Topo   #definire la topologia
-# topologia full mesh s1-s4. un host per swtitch
+# topologia full mesh s1-s4. un host per switch
 class MeshTopo ( Topo ):
 
   def build(self):
