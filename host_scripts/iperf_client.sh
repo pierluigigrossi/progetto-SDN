@@ -8,7 +8,7 @@ n_hosts=3
 hosts_IP=("10.0.0.1" "10.0.0.2" "10.0.0.3" "10.0.0.4")
 #elimino l'host su cui sono dalla lista dei target
 myip=$(ip -f inet addr show  | sed -En -e 's/.*inet ([0-9.]+).*/\1/p' | grep -F  10.0.0.)
-myip=10.0.0.2
+#myip=10.0.0.2
 for i in "${!hosts_IP[@]}"; do
     if [ ${hosts_IP[i]} != $myip ]
     then
