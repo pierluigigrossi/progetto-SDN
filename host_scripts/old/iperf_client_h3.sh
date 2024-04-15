@@ -1,7 +1,7 @@
 #!/bin/bash
 n_hosts=3
-hosts_IP=("10.0.0.1" "10.0.0.2" "10.0.0.3" )
-port=5201
+hosts_IP=("10.0.0.1" "10.0.0.2" "10.0.0.4" )
+port=5203
 t_min=10
 t_max=30
 sleep_min=1
