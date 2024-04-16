@@ -8,7 +8,7 @@ sleep_max=7
 
 iperf -s -p 5201 &
 echo "connessioni verso $host_IP"
-wait 10
+sleep 10
 
 
 
