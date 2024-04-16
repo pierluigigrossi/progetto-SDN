@@ -1,14 +1,25 @@
 #!/bin/bash
 #parametri
-t_min=10
-t_max=30
+t_min=3
+t_max=15
 sleep_min=1
-sleep_max=7 
+sleep_max=5 
 n_hosts=3
 hosts_IP=("10.0.0.1" "10.0.0.2" "10.0.0.3" "10.0.0.4")
 #elimino l'host su cui sono dalla lista dei target
 myip=$(ip -f inet addr show  | sed -En -e 's/.*inet ([0-9.]+).*/\1/p' | grep -F  10.0.0.)
 #myip=10.0.0.2
+
+#partenza server 
+
+iperf -s -p 5201 &
+iperf -s -p 5202 &
+iperf -s -p 5203 &
+iperf -s -p 5204 &
+pgrep iperf
+#aspetta 10 secondi dopo aver fatto partire i server prima dei client
+sleep 10
+
 for i in "${!hosts_IP[@]}"; do
     if [ ${hosts_IP[i]} != $myip ]
     then
@@ -26,8 +37,8 @@ while true; do
     i=$(($RANDOM%$n_hosts))
     wait=$(($RANDOM%($sleep_max-$sleep_min+1)+$sleep_min))
     t=$(($RANDOM%($t_max-$t_min+1)+$t_min))
-    echo "tentativo connessione ${hosts_IP[$i]} di durata $t s " 
-    iperf -c ${hosts_IP[$i]} -port $port -t  $t 
-    echo "prossima connessione iperf tra $wait s " 
+    echo "to ${hosts_IP[$i]}  "
+    echo "prossima connessione tra $($t+$wait))  s " 
+    iperf -c ${hosts_IP[$i]} -p $port -t  $t 
     sleep $wait
 done
