@@ -6,7 +6,8 @@ Scrivere un programma che, da ogni host, generi traffico TCP iperf a intervalli 
 
 Istruzioni esecuzione:
 copiare in una cartella di docker i file ryu.sh, tcp.py, topology.sh, iperf.sh,mesh-topology.py
-aggiungere i permessi per esecuzione:
+entrare nella cartella
+aggiungere i permessi per esecuzione agli script:
 ```
 chmod +x ryu.sh topology.sh iperf.sh
 ```
@@ -14,15 +15,17 @@ eseguire prima mininet con il comando:
 ```
 ./topology.sh
 ```
-poi in un'altra finestra ryu con il comando
+poi in un altro terminale  lanciare ryu con il comando
 ```
 ./ryu.sh
 ```
 
-esguire iperf sugli host, aprendo altri terminali (4) in contempornea con i comandi
+esguire lo script per iperf casuali iperf sui 4 host, aprendo altri terminali (4) in contempornea con i comandi
 dalla directory di docker in cui si è salvato iperf.sh:
+
 ```
 /root/mininet/util/m h1 ./iperf.sh
-/root/mininet/util/m h2 /path/to/iperf.sh
-/root/mininet/util/m h2 /path/to/iperf.sh
+/root/mininet/util/m h2 ./iperf.sh
+/root/mininet/util/m h3 ./iperf.sh
+/root/mininet/util/m h4 ./iperf.sh
 ```
