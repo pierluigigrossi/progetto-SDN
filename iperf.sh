@@ -9,7 +9,7 @@ hosts_IP=("10.0.0.1" "10.0.0.2" "10.0.0.3" "10.0.0.4")
 #elimino l'host su cui sono dalla lista dei target
 myip=$(ip -f inet addr show  | sed -En -e 's/.*inet ([0-9.]+).*/\1/p' | grep -F  10.0.0.)
 #myip=10.0.0.2
-
+out_file=output.txt
 #partenza server 
 
 iperf -s -p 5201 &
@@ -37,9 +37,9 @@ while true; do
     for i in "${!hosts_IP[@]}"; do
         wait=$(($RANDOM%($sleep_max-$sleep_min+1)+$sleep_min))
         t=$(($RANDOM%($t_max-$t_min+1)+$t_min))
-        echo "connessione ${hosts_IP[$i]}:$port di durata $t s " 
-        iperf -c ${hosts_IP[$i]} -p $port -t  $t &
-        echo "attesa $wait s"
+        echo "connessione ${hosts_IP[$i]}:$port di durata $t s " >> $out_file
+        iperf -c ${hosts_IP[$i]} -p $port -t $t &>> $out_file
+        echo "attesa $wait s" >> $out_file
         sleep $wait
     done
 done
