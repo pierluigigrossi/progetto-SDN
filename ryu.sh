@@ -1,1 +1,2 @@
-ryu-manager --observe-link tcp.py
+#!/bin/bash
+ryu-manager --observe-link tcp.py /root/flowmanager/flowmanager.py 
