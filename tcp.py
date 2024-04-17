@@ -12,11 +12,12 @@ from ryu.ofproto import ofproto_v1_3
 from ryu.topology import event, switches
 from ryu.topology.api import get_all_switch, get_all_link, get_all_host
 from ryu.lib.packet import packet, ethernet, ether_types, arp, tcp,ipv4
+from collections import defaultdict
 import networkx as nx
 import time
-X = 5
-T = 30
-d ={}
+d = defaultdict(list)
+X = 1
+T = 1
 
 class HopByHopSwitch(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
@@ -108,6 +109,8 @@ class HopByHopSwitch(app_manager.RyuApp):
 
         # trova switch destinazione
         (dst_dpid, dst_port) = self.find_destination_switch(destination_mac)
+        # trova switch sorgente
+        (src_dpid, src_port) = self.find_destination_switch(source_mac)
 
         # host non trovato
         if dst_dpid is None:
@@ -126,35 +129,28 @@ class HopByHopSwitch(app_manager.RyuApp):
         pkt_tcp = pkt.get_protocol(tcp.tcp)
         pkt_ipv4 = pkt.get_protocol(ipv4.ipv4)
         if pkt_tcp is not None:
-            # trova switch sorgente
-            (src_dpid, src_port) = self.find_destination_switch(source_mac)
+            #X =1 T=1 più di 1 pacchetto al secondo
             if pkt_tcp.has_flags(tcp.TCP_SYN) and src_dpid == datapath.id :
                 t = time.time()
                 i = 1
                 delta_t = 0
-                if destination_mac not in d :
-                    #[n_syn,current_syn,last_syn,delta_t]
-                    d[destination_mac] =[1,t,0,0]
-                else :
-                    d[destination_mac][0] = d[destination_mac][0]+1
-                    i = d[destination_mac][0]
-                    d[destination_mac][2] = d[destination_mac][1]
-                    d[destination_mac][1] = t
-                    d[destination_mac][3] =  t - d[destination_mac][2] + d[destination_mac][3]
-                    delta_t = d[destination_mac][3]
-                        #reset counter oltre il tempo
-                    if delta_t > T :
-                        d[destination_mac][0] = 1
-                        d[destination_mac][3] = 0
-                    
+                d[destination_mac].append(t)
+                l = len(d[destination_mac])
+                # i = SYN ricevuti in un periodo di tempo delta_t
+                while l >= 2 and delta_t < T and i <= X :
+                    delta_t = delta_t + d[destination_mac][l-1]-d[destination_mac][l-2]
+                    l = l-1
+                    i = i+1
+                #tieni nel dizionario solo SYN nell'intervallo di tempo di osservazione 0-T
+                l= l-1
+                while  l >= 1  and (i > X or delta_t > T):
+                    del d[destination_mac][l-1]
+                    l = l-1
                 print(pkt_ipv4.dst,':',pkt_tcp.dst_port,'Elapsed time:',delta_t)
-                i = d[destination_mac][0]
-                delta_t = d[destination_mac][3]
-                
                 #scarta pacchetto oltre soglia, più di X SYN in tempo minore di T
-                if i > X :
-                    print('KO', i, 'SYNs in', delta_t,'\n',)
-                    return
+                if i > X  and delta_t <= T:
+                   print('KO', i, 'SYNs in', delta_t,'\n',)
+                   return
                 print('OK')
         
         # inoltra il pacchetto corrente
