@@ -21,7 +21,7 @@ T = 1
 
 class HopByHopSwitch(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
-
+    # alla partenza della rete 2 flowmod 
     # tutti i pacchetti al controllore
     @set_ev_cls(ofp_event.EventOFPSwitchFeatures, CONFIG_DISPATCHER)
     def switch_features_handler(self, ev):
@@ -45,12 +45,13 @@ class HopByHopSwitch(app_manager.RyuApp):
             instructions=inst
         )
         datapath.send_msg(mod)
-        #tutti i SYN al controllore
+        #tutti i SYN IPv4 al controllore
         match = parser.OFPMatch(
-            eth_type=0x0800, 
-            ip_proto=6, 
-            tcp_flags=0x002
+            eth_type=0x0800,     #ipv4   
+            ip_proto=6,          #tcp
+            tcp_flags=0x002      #syn
         )
+        #Regola di match con priorità massima 
         mod = parser.OFPFlowMod(
             datapath=datapath,
             priority=20,
@@ -59,13 +60,13 @@ class HopByHopSwitch(app_manager.RyuApp):
         )
         datapath.send_msg(mod)
 
-    # trova switch destinazione e porta dello switch
+    # il controllore trova switch destinazione e porta dello switch
     def find_destination_switch(self,destination_mac):
         for host in get_all_host(self):
             if host.mac == destination_mac:
                 return (host.port.dpid, host.port.port_no)
         return (None,None)
-
+    #Calcolo dei cammini minimi
     def find_next_hop_to_destination(self,source_id,destination_id):
         net = nx.DiGraph()
         for link in get_all_link(self):
@@ -81,13 +82,13 @@ class HopByHopSwitch(app_manager.RyuApp):
 
         return first_link['port']
     
-    # eseguo quando arriva packet-in
+    # eseguo quando arriva packet-in, uno switch manda un pacchetto al controllore
     @set_ev_cls(ofp_event.EventOFPPacketIn, MAIN_DISPATCHER)
     
     def _packet_in_handler(self, ev):
 
         msg = ev.msg
-        datapath = msg.datapath
+        datapath = msg.datapath     #numero dello switch da cui arriva il pacchetto
         ofproto = datapath.ofproto
         parser = datapath.ofproto_parser
         in_port = msg.match['in_port']
@@ -95,7 +96,7 @@ class HopByHopSwitch(app_manager.RyuApp):
         pkt = packet.Packet(msg.data)
         eth = pkt.get_protocol(ethernet.ethernet)
 
-        # se ARP esegui proxy arp
+        # se ARP esegui proxy arp, l'host non conosce il mac della dst, gli viene comunicato da controller 
         if eth.ethertype == ether_types.ETH_TYPE_ARP:
             self.proxy_arp(msg)
             return
@@ -107,7 +108,7 @@ class HopByHopSwitch(app_manager.RyuApp):
         destination_mac = eth.dst
         source_mac = eth.src
 
-        # trova switch destinazione
+        # trova switch destinazione, uso la funzione dei cammini minimi
         (dst_dpid, dst_port) = self.find_destination_switch(destination_mac)
         # trova switch sorgente
         (src_dpid, src_port) = self.find_destination_switch(source_mac)
@@ -125,16 +126,18 @@ class HopByHopSwitch(app_manager.RyuApp):
             output_port = self.find_next_hop_to_destination(datapath.id,dst_dpid)
 
         # print "DP: ", datapath.id, "Host: ", pkt_ip.dst, "Port: ", output_port
-        #blocco TCP
+        #blocco TCP, elaborazione controller
         pkt_ipv4 = pkt.get_protocol(ipv4.ipv4)
         pkt_tcp = pkt.get_protocol(tcp.tcp)
         if pkt_tcp is not None:
             #X =1 T=1 più di 1 pacchetto al secondo
+            #il primo pacchetto è per forza un syn, perchè tutto il resto viene inoltrato direttamente 
+            #il controllo del flag è aggiuntivo, l'and sul src serve per contare una sola volta
             if pkt_tcp.has_flags(tcp.TCP_SYN) and src_dpid == datapath.id :
                 t = time.time()
                 i = 1
                 delta_t = 0
-                d[destination_mac].append(t)
+                d[destination_mac].append(t) 
                 l = len(d[destination_mac])
                 # i = SYN ricevuti in un periodo di tempo delta_t
                 while l >= 2 and delta_t < T and i <= X :
@@ -164,7 +167,7 @@ class HopByHopSwitch(app_manager.RyuApp):
         )
         datapath.send_msg(out)
         if pkt_tcp is None :
-            # aggiungi la regola
+            # aggiungi la regola per instradare direttamente i prossimi
             match = parser.OFPMatch(
                 eth_dst=destination_mac
                 )
@@ -176,7 +179,7 @@ class HopByHopSwitch(app_manager.RyuApp):
             ]
             mod = parser.OFPFlowMod(
                 datapath=datapath,
-                priority=10,
+                priority=10,            #il primo pacchetto non tcp viene passato con priorità minore dei syn ma maggiore di tutto il controllore
                 match=match,
                 instructions=inst,
                 buffer_id=msg.buffer_id
