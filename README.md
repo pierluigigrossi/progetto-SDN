@@ -19,7 +19,10 @@ poi in un altro terminale  lanciare ryu con il comando
 ```
 ./ryu.sh
 ```
-
+eseguire in mininet:
+```
+pingall
+```
 esguire lo script per iperf casuali iperf sui 4 host, aprendo altri terminali (4) in contempornea con i comandi
 dalla directory di docker in cui si è salvato iperf.sh:
 
