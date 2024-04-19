@@ -30,7 +30,7 @@ hosts_IP=("${new_array[@]}")
 unset new_array
 #caclolo porta target come 5200 + ultimo ottetto IP host
 h_part=$(echo $myip | cut -d . -f 4)
-tcpdump "tcp[tcpflags] & (tcp-syn|tcp-fin|tcp-rst) != 0" -w  $h_part.pcap
+tcpdump "tcp[tcpflags] & (tcp-syn|tcp-fin|tcp-rst) != 0" -w  $h_part.pcap &
 
 port=$((5200+$h_part))
 echo "port target $port"
