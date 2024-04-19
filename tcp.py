@@ -146,7 +146,7 @@ class HopByHopSwitch(app_manager.RyuApp):
                     i = i+1
                 #tieni nel dizionario solo SYN nell'intervallo di tempo di osservazione 0-T
                 l= l-1
-                while  l >= 1  and (i > X or delta_t > T):
+                while  l >= 1  and  delta_t > T:
                     del d[destination_mac][l-1]
                     l = l-1
                 print(pkt_ipv4.dst,':',pkt_tcp.dst_port,'Elapsed time:',delta_t)
