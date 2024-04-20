@@ -30,12 +30,15 @@ hosts_IP=("${new_array[@]}")
 unset new_array
 #caclolo porta target come 5200 + ultimo ottetto IP host
 h_part=$(echo $myip | cut -d . -f 4)
-tcpdump "tcp[tcpflags] & (tcp-syn|tcp-fin|tcp-rst) != 0" -w  $h_part.pcap &
+tcpdump "tcp[tcpflags] & (tcp-syn|tcp-ack|tcp-fin|tcp-rst) != 0" -w  $h_part.pcap &
 
 port=$((5200+$h_part))
 echo "port target $port"
 #loop per generare traffico simultaneamente
 for i in "${!hosts_IP[@]}"; do
+    #per ciascun host tranne quello su cui sono,
+    #fai loop  iperf ad intervalli causali (wait),
+    # di deurata casuale (t)
     while true; do
         wait=$(($RANDOM%($sleep_max-$sleep_min+1)+$sleep_min))
         t=$(($RANDOM%($t_max-$t_min+1)+$t_min))
@@ -44,5 +47,6 @@ for i in "${!hosts_IP[@]}"; do
         echo "attesa $wait s ${hosts_IP[$i]} " >> $out_file
         sleep $wait
     done &
-    echo "PID creati: $!" > $out_file
+    #mostra i 3 processi creati per i 3 loop in contemporanea
+    echo "PID creati: $!" >> $out_file
 done 
