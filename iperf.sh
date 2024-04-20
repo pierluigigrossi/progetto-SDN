@@ -34,20 +34,15 @@ tcpdump "tcp[tcpflags] & (tcp-syn|tcp-fin|tcp-rst) != 0" -w  $h_part.pcap &
 
 port=$((5200+$h_part))
 echo "port target $port"
-#loop per generare traffico
-while true; do
-    for i in "${!hosts_IP[@]}"; do
-        #wait=$(($RANDOM%($sleep_max-$sleep_min+1)+$sleep_min))
+#loop per generare traffico simultaneamente
+for i in "${!hosts_IP[@]}"; do
+    while true; do
+        wait=$(($RANDOM%($sleep_max-$sleep_min+1)+$sleep_min))
         t=$(($RANDOM%($t_max-$t_min+1)+$t_min))
         echo "connessione ${hosts_IP[$i]}:$port di durata $t s " >> $out_file
         iperf -c ${hosts_IP[$i]} -p $port -t $t >> $out_file
-        #echo "attesa singola $wait s" >> $out_file
-        #sleep $wait
+        echo "attesa $wait s ${hosts_IP[$i]} " >> $out_file
+        sleep $wait
     done &
-    wait=$(($RANDOM%($sleep_max-$sleep_min+1)+$sleep_min))
-    echo "attesa multiple $wait s" >> $out_file
-    sleep $wait
-done
-
-#decommentare wait echo e sleep nel for per attesa tra una connessione e l'altra. Ora è tutto simultaneo.
-#Ogni $wait partono 3 connessioni INSIEME di durata casuale verso altri 3 host.
+    echo "PID creati: $!" > $out_file
+done 
