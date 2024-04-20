@@ -43,5 +43,5 @@ while true; do
         iperf -c ${hosts_IP[$i]} -p $port -t $t >> $out_file
         echo "attesa $wait s" >> $out_file
         sleep $wait
-    done&
+    done &
 done
