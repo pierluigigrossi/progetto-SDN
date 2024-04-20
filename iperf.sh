@@ -9,7 +9,7 @@ hosts_IP=("10.0.0.1" "10.0.0.2" "10.0.0.3" "10.0.0.4")
 #elimino l'host su cui sono dalla lista dei target
 myip=$(ip -f inet addr show  | sed -En -e 's/.*inet ([0-9.]+).*/\1/p' | grep -F  10.0.0.)
 #myip=10.0.0.2
-out_file=output.txt
+
 #partenza server 
 
 iperf -s -p 5201 &
@@ -31,7 +31,7 @@ unset new_array
 #caclolo porta target come 5200 + ultimo ottetto IP host
 h_part=$(echo $myip | cut -d . -f 4)
 tcpdump "tcp[tcpflags] & (tcp-syn|tcp-ack|tcp-fin|tcp-rst) != 0" -w  $h_part.pcap &
-
+out_file=$h_part.output.txt
 port=$((5200+$h_part))
 echo "port target $port"
 #loop per generare traffico simultaneamente
@@ -42,9 +42,10 @@ for i in "${!hosts_IP[@]}"; do
     while true; do
         wait=$(($RANDOM%($sleep_max-$sleep_min+1)+$sleep_min))
         t=$(($RANDOM%($t_max-$t_min+1)+$t_min))
-        echo "connessione ${hosts_IP[$i]}:$port di durata $t s " >> $out_file
+        echo "$(date +"%T") $myip ->  ${hosts_IP[$i]}:$port di durata $t s " >> $out_file
         iperf -c ${hosts_IP[$i]} -p $port -t $t >> $out_file
-        echo "attesa $wait s ${hosts_IP[$i]} " >> $out_file
+        echo "$(date +"%T") fine $myip ->  ${hosts_IP[$i]}:$port  di durata $t s" >> $out_file
+        echo "attesa $wait s $myip -> ${hosts_IP[$i]}:$port " >> $out_file
         sleep $wait
     done &
     #mostra i 3 processi creati per i 3 loop in contemporanea
