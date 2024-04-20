@@ -37,11 +37,17 @@ echo "port target $port"
 #loop per generare traffico
 while true; do
     for i in "${!hosts_IP[@]}"; do
-        wait=$(($RANDOM%($sleep_max-$sleep_min+1)+$sleep_min))
+        #wait=$(($RANDOM%($sleep_max-$sleep_min+1)+$sleep_min))
         t=$(($RANDOM%($t_max-$t_min+1)+$t_min))
         echo "connessione ${hosts_IP[$i]}:$port di durata $t s " >> $out_file
         iperf -c ${hosts_IP[$i]} -p $port -t $t >> $out_file
-        echo "attesa $wait s" >> $out_file
-        sleep $wait
+        #echo "attesa singola $wait s" >> $out_file
+        #sleep $wait
     done &
+    wait=$(($RANDOM%($sleep_max-$sleep_min+1)+$sleep_min))
+    echo "attesa multiple $wait s" >> $out_file
+    sleep $wait
 done
+
+#decommentare wait echo e sleep nel for per attesa tra una connessione e l'altra. Ora è tutto simultaneo.
+#Ogni $wait partono 3 connessioni INSIEME di durata casuale verso altri 3 host.
