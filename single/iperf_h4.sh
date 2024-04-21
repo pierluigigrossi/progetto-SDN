@@ -5,12 +5,12 @@ t_min=10
 t_max=30
 sleep_min=1
 sleep_max=7
+out_file=h4.txt
 
 iperf -s -p 5201 &
-echo "connessioni verso $host_IP"
+tcpdump "tcp[tcpflags] & (tcp-syn|tcp-fin|tcp-rst) != 0" -w  $h_part.pcap &
+echo "connessioni da 10.0.0.4 verso $host_IP"
 sleep 10
-
-
 
 while true; do
     wait=$(($RANDOM%($sleep_max-$sleep_min+1)+$sleep_min))
