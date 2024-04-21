@@ -3,7 +3,7 @@
 t_min=3
 t_max=10
 sleep_min=1
-sleep_max=5 
+sleep_max=5
 n_hosts=3
 hosts_IP=("10.0.0.1" "10.0.0.2" "10.0.0.3" "10.0.0.4")
 #elimino l'host su cui sono dalla lista dei target
@@ -17,8 +17,8 @@ iperf -s -p 5202 &
 iperf -s -p 5203 &
 iperf -s -p 5204 &
 
-#aspetta 10 secondi dopo aver fatto partire i server prima dei client
-sleep 10
+#aspetta 3 secondi dopo aver fatto partire i server prima dei client
+sleep 3
 
 for i in "${!hosts_IP[@]}"; do
     if [ ${hosts_IP[i]} != $myip ]
@@ -43,10 +43,10 @@ for host in "${hosts_IP[@]}"; do
     while true; do
         wait=$(($RANDOM%($sleep_max-$sleep_min+1)+$sleep_min))
         t=$(($RANDOM%($t_max-$t_min+1)+$t_min))
+        sleep $wait
         echo "$(date +"%T")" inizio >> "$myip->$host.txt"
         iperf -c $host -p $port -t $t &>> "$myip->$host.txt"
         echo "$(date +"%T") fine " >> "$myip->$host.txt"
-        sleep $wait
         echo "elapsed_time: $(($wait+$t))" >> "$myip->$host.txt"
     done &
     #mostra i 3 processi creati per i 3 loop in contemporanea
