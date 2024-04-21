@@ -15,7 +15,7 @@ from ryu.lib.packet import packet, ethernet, ether_types, arp, tcp,ipv4
 import networkx as nx
 import time
 X = 5
-T = 30
+T = 10
 d ={}
 
 class HopByHopSwitch(app_manager.RyuApp):

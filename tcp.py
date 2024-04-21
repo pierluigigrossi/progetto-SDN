@@ -16,8 +16,8 @@ from collections import defaultdict
 import networkx as nx
 import time
 d = defaultdict(list)
-X = 1
-T = 1
+X = 5
+T = 10
 
 class HopByHopSwitch(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]

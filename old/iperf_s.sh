@@ -40,7 +40,7 @@ for port in "${ports[@]}"; do
         wait=$(($RANDOM%($sleep_max-$sleep_min+1)+$sleep_min))
         t=$(($RANDOM%($t_max-$t_min+1)+$t_min))
         echo "$(date +"%T") $myip ->  $nextip:$port di durata $t s " &>> $out_file
-        iperf -c $nextip -p $port -t $t  &>> $out_file 2>&1
+        iperf -c $nextip -p $port -t $t  &>> $out_file
         echo "$(date +"%T") fine $myip ->  $nextip:$port  di durata $t s" &>> $out_file
         echo "attesa $wait s $myip -> $nextip:$port " &>> $out_file
         sleep $wait

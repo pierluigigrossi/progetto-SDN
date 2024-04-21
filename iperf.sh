@@ -1,7 +1,7 @@
 #!/bin/bash
 #parametri
 t_min=3
-t_max=15
+t_max=10
 sleep_min=1
 sleep_max=5 
 n_hosts=3
@@ -16,7 +16,7 @@ iperf -s -p 5201 &
 iperf -s -p 5202 &
 iperf -s -p 5203 &
 iperf -s -p 5204 &
-pgrep iperf
+
 #aspetta 10 secondi dopo aver fatto partire i server prima dei client
 sleep 10
 
@@ -30,24 +30,25 @@ hosts_IP=("${new_array[@]}")
 unset new_array
 #caclolo porta target come 5200 + ultimo ottetto IP host
 h_part=$(echo $myip | cut -d . -f 4)
-tcpdump "tcp[tcpflags] & (tcp-syn|tcp-fin|tcp-rst) != 0" -w  $h_part.pcap &
+tcpdump "tcp[tcpflags] & (tcp-syn|tcp-fin|tcp-rst) != 0" -w  $myip.pcap &
 out_file=$h_part.output.txt
 port=$((5200+$h_part))
 echo "port target $port"
 #loop per generare traffico simultaneamente
-for i in "${!hosts_IP[@]}"; do
+for host in "${hosts_IP[@]}"; do
     #per ciascun host tranne quello su cui sono,
     #fai loop  iperf ad intervalli causali (wait),
     # di deurata casuale (t)
+    echo "port target $port" >> "$myip->$host.txt"
     while true; do
         wait=$(($RANDOM%($sleep_max-$sleep_min+1)+$sleep_min))
         t=$(($RANDOM%($t_max-$t_min+1)+$t_min))
-        echo "$(date +"%T") $myip ->  ${hosts_IP[$i]}:$port di durata $t s " >> $out_file
-        iperf -c ${hosts_IP[$i]} -p $port -t $t 2>&1 >> $out_file
-        echo "$(date +"%T") fine $myip ->  ${hosts_IP[$i]}:$port  di durata $t s" >> $out_file
-        echo "attesa $wait s $myip -> ${hosts_IP[$i]}:$port " >> $out_file
+        echo "$(date +"%T")" inizio >> "$myip->$host.txt"
+        iperf -c $host -p $port -t $t &>> "$myip->$host.txt"
+        echo "$(date +"%T") fine " >> "$myip->$host.txt"
         sleep $wait
+        echo "elapsed_time: $(($wait+$t))" >> "$myip->$host.txt"
     done &
     #mostra i 3 processi creati per i 3 loop in contemporanea
-    echo "PID creati: $!" >> $out_file
+    echo "PID creati: $!" >> $out_file.proc.txt
 done 
