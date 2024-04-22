@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "SYN prima di timeout"
+echo "tcp_syn_retries:"
 cat /proc/sys/net/ipv4/tcp_syn_retries 
 echo "Partenza  automatica sui 4 host degli script"
 cd /root/sdn-labs/progetto8
