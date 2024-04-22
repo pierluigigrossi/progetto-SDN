@@ -1,0 +1,220 @@
+port target 5202
+20:04:03 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5202
+TCP window size:  436 KByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 37362 connected with 10.0.0.1 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 4.0 sec  10.1 GBytes  21.7 Gbits/sec
+20:04:07 fine 
+elapsed_time: 14
+20:04:17 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5202
+TCP window size: 4.00 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 49508 connected with 10.0.0.1 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 6.0 sec  28.1 GBytes  40.2 Gbits/sec
+20:04:23 fine 
+elapsed_time: 26
+20:04:43 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5202
+TCP window size: 1.78 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 56006 connected with 10.0.0.1 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 5.0 sec  36.3 GBytes  62.4 Gbits/sec
+20:04:48 fine 
+elapsed_time: 22
+20:05:05 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5202
+TCP window size: 3.04 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 49038 connected with 10.0.0.1 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 7.0 sec  49.9 GBytes  61.3 Gbits/sec
+20:05:12 fine 
+elapsed_time: 15
+20:05:20 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5202
+TCP window size: 1.98 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 59712 connected with 10.0.0.1 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 3.0 sec  23.9 GBytes  68.5 Gbits/sec
+20:05:23 fine 
+elapsed_time: 6
+20:05:26 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5202
+TCP window size: 2.55 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 37616 connected with 10.0.0.1 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-10.0 sec  75.5 GBytes  64.9 Gbits/sec
+20:05:36 fine 
+elapsed_time: 16
+20:05:42 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5202
+TCP window size: 2.36 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 51022 connected with 10.0.0.1 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-10.0 sec  74.8 GBytes  64.3 Gbits/sec
+20:05:52 fine 
+elapsed_time: 18
+20:06:00 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5202
+TCP window size: 2.32 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 54534 connected with 10.0.0.1 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-10.0 sec  46.1 GBytes  39.6 Gbits/sec
+20:06:10 fine 
+elapsed_time: 23
+20:06:23 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5202
+TCP window size: 1.98 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 33242 connected with 10.0.0.1 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-10.0 sec  74.3 GBytes  63.8 Gbits/sec
+20:06:33 fine 
+elapsed_time: 20
+20:06:43 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5202
+TCP window size: 2.86 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 43530 connected with 10.0.0.1 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 4.0 sec  28.8 GBytes  61.9 Gbits/sec
+20:06:47 fine 
+elapsed_time: 10
+20:06:53 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5202
+TCP window size: 1.04 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 60652 connected with 10.0.0.1 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 7.0 sec  46.7 GBytes  57.4 Gbits/sec
+20:07:00 fine 
+elapsed_time: 12
+20:07:05 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5202
+TCP window size: 2.78 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 45180 connected with 10.0.0.1 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 7.0 sec  37.9 GBytes  46.6 Gbits/sec
+20:07:13 fine 
+elapsed_time: 20
+20:07:26 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5202
+TCP window size: 1.17 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 39950 connected with 10.0.0.1 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 4.0 sec  34.5 GBytes  74.0 Gbits/sec
+20:07:30 fine 
+elapsed_time: 21
+20:07:47 inizio
+connect failed: Operation now in progress
+20:07:54 fine 
+elapsed_time: 24
+20:08:11 inizio
+connect failed: Operation now in progress
+20:08:19 fine 
+elapsed_time: 23
+20:08:34 inizio
+connect failed: Operation now in progress
+20:08:41 fine 
+elapsed_time: 21
+20:08:56 inizio
+connect failed: Operation now in progress
+20:09:04 fine 
+elapsed_time: 24
+20:09:20 inizio
+connect failed: Operation now in progress
+20:09:23 fine 
+elapsed_time: 17
+20:09:37 inizio
+connect failed: Operation now in progress
+20:09:43 fine 
+elapsed_time: 22
+20:09:59 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5202
+TCP window size: 1.87 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 46480 connected with 10.0.0.1 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 5.0 sec  43.7 GBytes  75.1 Gbits/sec
+20:10:04 fine 
+elapsed_time: 20
+20:10:19 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5202
+TCP window size: 2.65 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 38474 connected with 10.0.0.1 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 5.0 sec  44.0 GBytes  75.6 Gbits/sec
+20:10:24 fine 
+elapsed_time: 21
+20:10:40 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5202
+TCP window size: 1.05 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 40842 connected with 10.0.0.1 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 7.0 sec  61.8 GBytes  75.8 Gbits/sec
+20:10:47 fine 
+elapsed_time: 22
+20:11:02 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5202
+TCP window size:  702 KByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 53182 connected with 10.0.0.1 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 8.0 sec  72.0 GBytes  77.3 Gbits/sec
+20:11:10 fine 
+elapsed_time: 17
+20:11:19 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5202
+TCP window size: 2.03 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 36096 connected with 10.0.0.1 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 4.0 sec  34.8 GBytes  74.6 Gbits/sec
+20:11:23 fine 
+elapsed_time: 7
+20:11:26 inizio
+connect failed: Operation now in progress
+20:11:37 fine 
+elapsed_time: 16
+20:11:43 inizio
+connect failed: Operation now in progress
+20:11:49 fine 
+elapsed_time: 8
+20:11:51 inizio
+connect failed: Operation now in progress
+20:11:54 fine 
+elapsed_time: 11
+20:12:02 inizio
+connect failed: Operation now in progress
+20:12:09 fine 

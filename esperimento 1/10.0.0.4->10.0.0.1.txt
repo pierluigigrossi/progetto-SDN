@@ -1,0 +1,213 @@
+port target 5204
+20:04:01 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5204
+TCP window size: 4.00 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 35374 connected with 10.0.0.1 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 8.0 sec  31.1 GBytes  33.4 Gbits/sec
+20:04:09 fine 
+elapsed_time: 22
+20:04:23 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5204
+TCP window size: 1.49 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 46956 connected with 10.0.0.1 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 6.0 sec  35.2 GBytes  50.4 Gbits/sec
+20:04:29 fine 
+elapsed_time: 24
+20:04:47 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5204
+TCP window size: 1.75 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 50014 connected with 10.0.0.1 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 9.0 sec  73.0 GBytes  69.7 Gbits/sec
+20:04:56 fine 
+elapsed_time: 22
+20:05:09 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5204
+TCP window size: 4.00 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 56440 connected with 10.0.0.1 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-10.0 sec  80.6 GBytes  69.2 Gbits/sec
+20:05:19 fine 
+elapsed_time: 23
+20:05:32 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5204
+TCP window size: 2.69 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 40936 connected with 10.0.0.1 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 7.0 sec  55.4 GBytes  68.0 Gbits/sec
+20:05:39 fine 
+elapsed_time: 25
+20:05:57 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5204
+TCP window size: 1.63 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 50580 connected with 10.0.0.1 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-10.0 sec  51.8 GBytes  44.5 Gbits/sec
+20:06:08 fine 
+elapsed_time: 17
+20:06:15 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5204
+TCP window size: 1.88 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 53262 connected with 10.0.0.1 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 6.0 sec  47.4 GBytes  67.8 Gbits/sec
+20:06:21 fine 
+elapsed_time: 19
+20:06:34 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5204
+TCP window size: 1.15 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 43986 connected with 10.0.0.1 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 4.0 sec  27.2 GBytes  58.4 Gbits/sec
+20:06:38 fine 
+elapsed_time: 22
+20:06:56 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5204
+TCP window size:  639 KByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 36594 connected with 10.0.0.1 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 3.0 sec  18.3 GBytes  52.4 Gbits/sec
+20:06:59 fine 
+elapsed_time: 11
+20:07:07 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5204
+TCP window size: 1.81 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 45684 connected with 10.0.0.1 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 6.0 sec  28.1 GBytes  40.2 Gbits/sec
+20:07:13 fine 
+elapsed_time: 10
+20:07:17 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5204
+TCP window size: 3.03 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 47614 connected with 10.0.0.1 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 5.0 sec  40.4 GBytes  69.4 Gbits/sec
+20:07:22 fine 
+elapsed_time: 19
+20:07:36 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5204
+TCP window size: 4.00 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 49526 connected with 10.0.0.1 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 4.0 sec  22.6 GBytes  48.6 Gbits/sec
+20:07:40 fine 
+elapsed_time: 5
+20:07:41 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5204
+TCP window size: 2.60 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 49542 connected with 10.0.0.1 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 3.0 sec  25.2 GBytes  72.1 Gbits/sec
+20:07:44 fine 
+elapsed_time: 14
+20:07:55 inizio
+connect failed: Operation now in progress
+20:08:01 fine 
+elapsed_time: 26
+20:08:21 inizio
+connect failed: Operation now in progress
+20:08:25 fine 
+elapsed_time: 10
+20:08:31 inizio
+connect failed: Operation now in progress
+20:08:35 fine 
+elapsed_time: 13
+20:08:44 inizio
+connect failed: Operation now in progress
+20:08:50 fine 
+elapsed_time: 22
+20:09:06 inizio
+connect failed: Operation now in progress
+20:09:15 fine 
+elapsed_time: 14
+20:09:20 inizio
+connect failed: Operation now in progress
+20:09:30 fine 
+elapsed_time: 21
+20:09:42 inizio
+connect failed: Operation now in progress
+20:09:45 fine 
+elapsed_time: 21
+20:10:03 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5204
+TCP window size: 2.16 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 35528 connected with 10.0.0.1 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 8.0 sec  71.1 GBytes  76.4 Gbits/sec
+20:10:11 fine 
+elapsed_time: 21
+20:10:24 inizio
+connect failed: Operation now in progress
+20:10:28 fine 
+elapsed_time: 20
+20:10:44 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5204
+TCP window size: 2.37 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 58934 connected with 10.0.0.1 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 5.0 sec  43.4 GBytes  74.6 Gbits/sec
+20:10:49 fine 
+elapsed_time: 25
+20:11:09 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5204
+TCP window size: 1.75 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 39448 connected with 10.0.0.1 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-10.0 sec  90.2 GBytes  77.5 Gbits/sec
+20:11:19 fine 
+elapsed_time: 13
+20:11:22 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5204
+TCP window size: 2.93 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 60676 connected with 10.0.0.1 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 9.0 sec  79.9 GBytes  76.3 Gbits/sec
+20:11:31 fine 
+elapsed_time: 10
+20:11:32 inizio
+connect failed: Operation now in progress
+20:11:35 fine 
+elapsed_time: 14
+20:11:46 inizio
+connect failed: Operation now in progress
+20:11:52 fine 
+elapsed_time: 26
+20:12:12 inizio
+connect failed: Operation now in progress

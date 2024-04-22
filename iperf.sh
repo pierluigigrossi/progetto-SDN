@@ -17,8 +17,10 @@ iperf -s -p 5202 &
 iperf -s -p 5203 &
 iperf -s -p 5204 &
 
-#aspetta 3 secondi dopo aver fatto partire i server prima dei client
-sleep 3
+tcpdump "tcp[tcpflags] & (tcp-syn|tcp-fin|tcp-rst) != 0" -w  $myip.pcap &
+
+#aspetta 10 secondi dopo aver fatto partire i server prima dei client
+sleep 10
 
 for i in "${!hosts_IP[@]}"; do
     if [ ${hosts_IP[i]} != $myip ]
@@ -30,7 +32,6 @@ hosts_IP=("${new_array[@]}")
 unset new_array
 #caclolo porta target come 5200 + ultimo ottetto IP host
 h_part=$(echo $myip | cut -d . -f 4)
-tcpdump "tcp[tcpflags] & (tcp-syn|tcp-fin|tcp-rst) != 0" -w  $myip.pcap &
 out_file=$h_part.output.txt
 port=$((5200+$h_part))
 echo "port target $port"
