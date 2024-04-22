@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "SYN prima di timeout"
-cat /proc/sys/net/ipv4/tcp_synack_retries 
+cat /proc/sys/net/ipv4/tcp_syn_retries 
 echo "Partenza  automatica sui 4 host degli script"
 cd /root/sdn-labs/progetto8
 /root/mininet/util/m h1 ./iperf.sh &
