@@ -1,0 +1,63 @@
+port target 5204
+12:08:34 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5204
+TCP window size: 4.00 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 49908 connected with 10.0.0.3 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-12.0 sec  53.7 GBytes  38.4 Gbits/sec
+12:08:46 fine 
+elapsed_time: 24
+12:08:56 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5204
+TCP window size: 2.44 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 39286 connected with 10.0.0.3 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-13.0 sec  93.0 GBytes  61.4 Gbits/sec
+12:09:09 fine 
+elapsed_time: 23
+12:09:24 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5204
+TCP window size: 1.67 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 40400 connected with 10.0.0.3 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 6.0 sec  42.5 GBytes  60.9 Gbits/sec
+12:09:30 fine 
+elapsed_time: 21
+12:09:35 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5204
+TCP window size: 1.63 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 53706 connected with 10.0.0.3 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-14.0 sec  78.1 GBytes  47.9 Gbits/sec
+12:09:49 fine 
+elapsed_time: 19
+12:10:09 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5204
+TCP window size: 45.0 KByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 40768 connected with 10.0.0.3 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-15.0 sec   105 GBytes  60.3 Gbits/sec
+12:10:24 fine 
+elapsed_time: 35
+12:10:38 inizio
+connect failed: Operation now in progress
+12:10:43 fine 
+elapsed_time: 19
+12:10:49 inizio
+connect failed: Operation now in progress
+12:11:03 fine 
+elapsed_time: 19
+12:11:08 inizio
+connect failed: Operation now in progress
+12:11:20 fine 
+elapsed_time: 17

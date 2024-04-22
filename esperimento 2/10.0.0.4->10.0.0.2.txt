@@ -1,0 +1,49 @@
+port target 5204
+12:08:40 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.2, TCP port 5204
+TCP window size: 1.46 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 53834 connected with 10.0.0.2 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-15.0 sec  73.4 GBytes  42.1 Gbits/sec
+12:08:55 fine 
+elapsed_time: 33
+12:09:10 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.2, TCP port 5204
+TCP window size: 4.00 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 55698 connected with 10.0.0.2 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 4.0 sec  13.0 GBytes  27.8 Gbits/sec
+12:09:14 fine 
+elapsed_time: 19
+12:09:18 inizio
+connect failed: Operation now in progress
+12:09:31 fine 
+elapsed_time: 17
+12:09:49 inizio
+connect failed: Operation now in progress
+12:09:57 fine 
+elapsed_time: 26
+12:10:10 inizio
+connect failed: Operation now in progress
+12:10:23 fine 
+elapsed_time: 26
+12:10:33 inizio
+connect failed: Operation now in progress
+12:10:45 fine 
+elapsed_time: 22
+12:11:03 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.2, TCP port 5204
+TCP window size:  572 KByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.4 port 41942 connected with 10.0.0.2 port 5204
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 8.0 sec  53.4 GBytes  57.3 Gbits/sec
+12:11:11 fine 
+elapsed_time: 26
+12:11:30 inizio
+connect failed: Operation now in progress
