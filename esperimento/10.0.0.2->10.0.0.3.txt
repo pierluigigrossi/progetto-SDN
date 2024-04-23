@@ -1,0 +1,181 @@
+port target 5202
+17:01:42 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5202
+TCP window size: 2.61 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 60428 connected with 10.0.0.3 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-13.0 sec  55.1 GBytes  36.4 Gbits/sec
+17:01:55 fine 
+elapsed_time: 28
+17:02:09 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5202
+TCP window size: 4.00 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 40342 connected with 10.0.0.3 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 5.0 sec  22.8 GBytes  39.2 Gbits/sec
+17:02:15 fine 
+elapsed_time: 19
+17:02:23 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5202
+TCP window size: 2.07 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 45062 connected with 10.0.0.3 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 8.0 sec  23.5 GBytes  25.2 Gbits/sec
+17:02:31 fine 
+elapsed_time: 16
+17:02:39 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5202
+TCP window size: 3.22 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 54014 connected with 10.0.0.3 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 9.0 sec  51.1 GBytes  48.7 Gbits/sec
+17:02:48 fine 
+elapsed_time: 17
+17:03:00 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5202
+TCP window size:  410 KByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 38712 connected with 10.0.0.3 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-13.0 sec  79.8 GBytes  52.8 Gbits/sec
+17:03:13 fine 
+elapsed_time: 25
+17:03:15 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5202
+TCP window size: 4.00 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 58996 connected with 10.0.0.3 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-10.0 sec  38.2 GBytes  32.9 Gbits/sec
+17:03:25 fine 
+elapsed_time: 12
+17:03:28 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5202
+TCP window size: 4.00 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 52914 connected with 10.0.0.3 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 8.0 sec  43.6 GBytes  46.8 Gbits/sec
+17:03:36 fine 
+elapsed_time: 11
+17:03:48 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5202
+TCP window size: 3.20 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 48534 connected with 10.0.0.3 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 4.0 sec  15.9 GBytes  34.2 Gbits/sec
+17:03:52 fine 
+elapsed_time: 16
+17:04:06 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5202
+TCP window size: 1.71 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 44024 connected with 10.0.0.3 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-10.0 sec  56.0 GBytes  48.1 Gbits/sec
+17:04:16 fine 
+elapsed_time: 24
+17:04:33 inizio
+connect failed: Operation now in progress
+17:04:37 fine 
+elapsed_time: 21
+17:04:38 inizio
+connect failed: Operation now in progress
+17:04:45 fine 
+elapsed_time: 7
+17:04:52 inizio
+connect failed: Operation now in progress
+17:05:04 fine 
+elapsed_time: 19
+17:05:06 inizio
+connect failed: Operation now in progress
+17:05:11 fine 
+elapsed_time: 7
+17:05:25 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5202
+TCP window size:  504 KByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 41966 connected with 10.0.0.3 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-14.0 sec  70.4 GBytes  43.2 Gbits/sec
+17:05:39 fine 
+elapsed_time: 28
+17:05:46 inizio
+connect failed: Operation now in progress
+17:05:49 fine 
+elapsed_time: 10
+17:06:00 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5202
+TCP window size: 4.00 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 40820 connected with 10.0.0.3 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 7.0 sec  19.8 GBytes  24.3 Gbits/sec
+17:06:07 fine 
+elapsed_time: 18
+17:06:09 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5202
+TCP window size: 4.00 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 45490 connected with 10.0.0.3 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-11.0 sec  37.3 GBytes  29.1 Gbits/sec
+17:06:20 fine 
+elapsed_time: 13
+17:06:37 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5202
+TCP window size: 2.85 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 56656 connected with 10.0.0.3 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-15.0 sec  79.6 GBytes  45.6 Gbits/sec
+17:06:53 fine 
+elapsed_time: 32
+17:06:58 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5202
+TCP window size: 2.61 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 58774 connected with 10.0.0.3 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 3.0 sec  19.1 GBytes  54.8 Gbits/sec
+17:07:01 fine 
+elapsed_time: 8
+17:07:07 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5202
+TCP window size: 2.10 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 58778 connected with 10.0.0.3 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 9.0 sec  70.8 GBytes  67.6 Gbits/sec
+17:07:16 fine 
+elapsed_time: 15
+17:07:25 inizio
+------------------------------------------------------------
+Client connecting to 10.0.0.3, TCP port 5202
+TCP window size: 2.14 MByte (default)
+------------------------------------------------------------
+[  5] local 10.0.0.2 port 60280 connected with 10.0.0.3 port 5202
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0-14.0 sec   102 GBytes  62.3 Gbits/sec
+17:07:39 fine 
+elapsed_time: 23
