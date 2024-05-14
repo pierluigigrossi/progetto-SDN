@@ -134,7 +134,7 @@ class HopByHopSwitch(app_manager.RyuApp):
             #X =1 T=1 più di 1 pacchetto al secondo
             #il primo pacchetto è per forza un syn, perchè tutto il resto viene inoltrato direttamente 
             #il controllo del flag è aggiuntivo, l'and sul src serve per contare una sola volta
-            if pkt_tcp.has_flags(tcp.TCP_SYN) and src_dpid == datapath.id :
+            if pkt_tcp.has_flags(tcp.TCP_SYN) and (not pkt_tcp.has_flags(tcp.TCP_ACK)) and src_dpid == datapath.id :
                 t = time.time()
                 i = 1
                 delta_t = 0
@@ -169,7 +169,7 @@ class HopByHopSwitch(app_manager.RyuApp):
                             src_port=pkt_tcp.dst_port,
                             dst_port=pkt_tcp.src_port,
                             bits=0x014,  # RST and ACK flag
-                            seq=pkt_tcp.ack +1,
+                            seq=pkt_tcp.ack,
                             ack=pkt_tcp.seq +1
                         )
                         pkt_rst.add_protocol(eth_rst)
@@ -201,7 +201,7 @@ class HopByHopSwitch(app_manager.RyuApp):
             data=msg.data
         )
         datapath.send_msg(out)
-        if pkt_tcp is None :
+        if pkt_tcp is None or not pkt_tcp.bits == 0x002 :
             # aggiungi la regola per instradare direttamente i prossimi
             match = parser.OFPMatch(
                 eth_dst=destination_mac
