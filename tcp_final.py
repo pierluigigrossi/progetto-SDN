@@ -28,6 +28,7 @@ if report is True :
     header = ['Accepted or not','timestamp','IP_SRC', 'IP_DST', 'PORT_SRC', 'PORT_DST']
     with open('ryu_tcp.csv', 'a', encoding='UTF8', newline='') as f:
         writer = csv.writer(f)
+        writer.writerow(header)
     f.close()
 
 class HopByHopSwitch(app_manager.RyuApp):
@@ -178,7 +179,7 @@ class HopByHopSwitch(app_manager.RyuApp):
                     if report is True :
                         with open('ryu_tcp.csv', 'a', encoding='UTF8', newline='') as f:
                             writer = csv.writer(f)
-                            writer.writerow(['X',time.ctime(t),pkt_ipv4.src, pkt_ipv4.dst, pkt_ipv4.src_port, pkt_ipv4.dst_port])
+                            writer.writerow(['X',time.ctime(t),pkt_ipv4.src, pkt_ipv4.dst, pkt_tcp.src_port, pkt_tcp.dst_port])
                         f.close()
                     print('KO at least', i, 'SYNs in', delta_t,'\n',)
                     if reset is True :
@@ -221,7 +222,7 @@ class HopByHopSwitch(app_manager.RyuApp):
                 if report is True :
                     with open('ryu_tcp.csv', 'a', encoding='UTF8', newline='') as f:
                         writer = csv.writer(f)
-                        writer.writerow([' ',time.ctime(t),pkt_ipv4.src, pkt_ipv4.dst, pkt_ipv4.src_port, pkt_ipv4.dst_port])
+                        writer.writerow(['A',time.ctime(t),pkt_ipv4.src, pkt_ipv4.dst, pkt_tcp.src_port, pkt_tcp.dst_port])
                         f.close()
         
         # inoltra il pacchetto corrente
