@@ -48,7 +48,7 @@ for host in "${hosts_IP[@]}"; do
         echo "$(date +"%T")" inizio >> "$myip->$host.txt"
         iperf -c $host -p $port -t $t &>> "$myip->$host.txt"
         echo "$(date +"%T") fine " >> "$myip->$host.txt"
-        echo "elapsed_time: $(($wait+$t))" >> "$myip->$host.txt"
+        #echo "elapsed_time: $(($wait+$t))" >> "$myip->$host.txt"
     done &
     #mostra i 3 processi creati per i 3 loop in contemporanea
     echo "PID creati: $!" >> $out_file.proc.txt
