@@ -5,17 +5,17 @@ t_max=15
 sleep_min=1
 sleep_max=20
 n_hosts=3
-hosts_IP=("10.10.6.41" "10.10.6.42" "10.10.6.43" "10.10.6.44")
+hosts_IP=("10.10.6.40" "10.10.6.41" "10.10.6.42")
 #elimino l'host su cui sono dalla lista dei target
 myip=$(ip -f inet addr show  | sed -En -e 's/.*inet ([0-9.]+).*/\1/p' | grep -F  10.10.6.)
 #myip=10.0.0.2
 
 #partenza server 
 
+iperf -s -p 5240 &
 iperf -s -p 5241 &
 iperf -s -p 5242 &
-iperf -s -p 5243 &
-iperf -s -p 5244 &
+#iperf -s -p 5244 &
 
 tcpdump "tcp[tcpflags] & (tcp-syn|tcp-fin|tcp-rst) != 0" -w  $myip.pcap &
 
