@@ -317,9 +317,10 @@ class HopByHopSwitch(app_manager.RyuApp):
             datapath = msg.datapath
             ofproto = datapath.ofproto
 
-            if msg.reason in [ofproto.OFPPR_DELETE, ofproto.OFPPR_MODIFY]:
+            #if msg.reason in [ofproto.OFPPR_DELETE, ofproto.OFPPR_MODIFY]:
+             # porta rimossa
              # cancella le regole e ricalcola
-                self.clean_all_flows()
+            self.clean_all_flows()
             return
         def clean_all_flows(self):
             # Get all switches in the network
