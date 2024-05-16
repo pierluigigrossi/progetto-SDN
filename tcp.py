@@ -16,7 +16,7 @@ from collections import defaultdict
 import networkx as nx
 import time
 d = defaultdict(list)
-X = 5
+X = 3
 T = 10
 
 class HopByHopSwitch(app_manager.RyuApp):
@@ -48,8 +48,7 @@ class HopByHopSwitch(app_manager.RyuApp):
         #tutti i SYN IPv4 al controllore
         match = parser.OFPMatch(
             eth_type=0x0800,     #ipv4   
-            ip_proto=6,          #tcp
-            tcp_flags=0x002      #syn
+            ip_proto=6          #tcp    #syn
         )
         #Regola di match con priorità massima 
         mod = parser.OFPFlowMod(
@@ -133,7 +132,7 @@ class HopByHopSwitch(app_manager.RyuApp):
             #X =1 T=1 più di 1 pacchetto al secondo
             #il primo pacchetto è per forza un syn, perchè tutto il resto viene inoltrato direttamente 
             #il controllo del flag è aggiuntivo, l'and sul src serve per contare una sola volta
-            if pkt_tcp.has_flags(tcp.TCP_SYN) and src_dpid == datapath.id :
+            if pkt_tcp.has_flags(tcp.TCP_SYN) and (not pkt_tcp.has_flags(tcp.TCP_ACK)) and src_dpid == datapath.id :
                 t = time.time()
                 i = 1
                 delta_t = 0
@@ -183,6 +182,33 @@ class HopByHopSwitch(app_manager.RyuApp):
                 instructions=inst,
                 buffer_id=msg.buffer_id
             )
+            datapath.send_msg(mod)
+        else :
+        #installa flusso connessione
+            match = parser.OFPMatch(
+                eth_dst=destination_mac, 
+                eth_src=source_mac,
+                eth_type=0x0800, #ipv4
+                ipv4_src=pkt_ipv4.src,
+                ipv4_dst=pkt_ipv4.dst,        
+                ip_proto=6,          #tcp
+                tcp_dst=pkt_tcp.dst_port,
+                tcp_src=pkt_tcp.src_port
+             )
+            inst = [
+                    parser.OFPInstructionActions(
+                    ofproto.OFPIT_APPLY_ACTIONS,
+                    [ parser.OFPActionOutput(output_port) ]
+                    )
+            ]
+            mod = parser.OFPFlowMod(
+                datapath=datapath,
+                priority=30,
+                match = match,
+                instructions=inst,
+                idle_timeout=5
+                #timer
+                )
             datapath.send_msg(mod)
 
         return

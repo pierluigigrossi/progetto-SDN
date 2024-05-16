@@ -17,7 +17,7 @@ iperf -s -p 5241 &
 iperf -s -p 5242 &
 #iperf -s -p 5244 &
 
-tcpdump "tcp[tcpflags] & (tcp-syn|tcp-fin|tcp-rst) != 0" -w  $myip.pcap &
+sudo tcpdump "tcp[tcpflags] & (tcp-syn|tcp-fin|tcp-rst) != 0" -i eth0  -w  $myip.pcap &
 
 #aspetta 10 secondi dopo aver fatto partire i server prima dei client
 sleep 10

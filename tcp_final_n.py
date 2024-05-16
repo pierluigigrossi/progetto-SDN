@@ -23,11 +23,12 @@ d = defaultdict(list)
 X = 3
 T = 10
 reset = True
+reroute= True
 approx = False
 report = True
 report_file='ryu_tcp.csv'
 
-if X < 0 and (not X.isdigit()) or T <= 0 :
+if X < 0 or T < 0 :
     print ('Valori T o X non validi')
     sys.exit(1)
 
@@ -64,13 +65,12 @@ class HopByHopSwitch(app_manager.RyuApp):
             instructions=inst
         )
         datapath.send_msg(mod)
-        #tutti i SYN IPv4 al controllore
+        #tutti i TCP IPv4 al controllore
         match = parser.OFPMatch(
             eth_type=0x0800,     #ipv4   
             ip_proto=6,          #tcp
-            tcp_flags=0x002      #syn
         )
-        #Regola di match con priorità massima 
+        #Regola di match con priorità più alta del resto del traffico 
         mod = parser.OFPFlowMod(
             datapath=datapath,
             priority=20,
@@ -226,24 +226,51 @@ class HopByHopSwitch(app_manager.RyuApp):
                     return
 
                 print('OK')
-                #packetout diretto sulla destinazione, no hop by hop and learning
-                datapath = get_datapath(self, dst_dpid)
-                out = parser.OFPPacketOut(
-                    datapath=datapath,
-                    buffer_id=ofproto.OFP_NO_BUFFER,
-                    in_port=ofproto.OFPP_CONTROLLER,
-                    actions=[parser.OFPActionOutput(dst_port)],
-                    data=msg.data
-                )
-                datapath.send_msg(out)
                 if report is True :
                     with open(report_file, 'a', encoding='UTF8', newline='') as f:
                         writer = csv.writer(f)
                         writer.writerow(['A',time.ctime(t),pkt_ipv4.src, pkt_ipv4.dst, pkt_tcp.src_port, pkt_tcp.dst_port])
                         f.close()
-                return
+            #installo regola flusso TCP per instradamento diretto            
+            match = parser.OFPMatch(
+                eth_dst=destination_mac, 
+                eth_src=source_mac,
+                eth_type=0x0800, #ipv4
+                ipv4_src=pkt_ipv4.src,
+                ipv4_dst=pkt_ipv4.dst,        
+                ip_proto=6,          #tcp
+                tcp_dst=pkt_tcp.dst_port,
+                tcp_src=pkt_tcp.src_port
+             )
+            inst = [
+                    parser.OFPInstructionActions(
+                    ofproto.OFPIT_APPLY_ACTIONS,
+                    [ parser.OFPActionOutput(output_port) ]
+                    )
+            ]
+            mod = parser.OFPFlowMod(
+                datapath=datapath,
+                priority=30,
+                match = match,
+                instructions=inst,
+                idle_timeout=5
+                #timer
+                )
+            datapath.send_msg(mod)
+            #packetout diretto sulla destinazione
+            datapath = get_datapath(self, dst_dpid)
+            out = parser.OFPPacketOut(
+                datapath=datapath,
+                buffer_id=ofproto.OFP_NO_BUFFER,
+                in_port=ofproto.OFPP_CONTROLLER,
+                actions=[parser.OFPActionOutput(dst_port)],
+                data=msg.data
+            )
+            datapath.send_msg(out)
+            #regola install
+            return
         
-        # inoltra il pacchetto corrente hop by hop per non SYN
+        # inoltra il pacchetto corrente & learning hop by hop per non SYN
         actions = [ parser.OFPActionOutput(output_port) ]
         out = parser.OFPPacketOut(
             datapath=datapath,
@@ -275,47 +302,46 @@ class HopByHopSwitch(app_manager.RyuApp):
         datapath.send_msg(mod)
 
         return
-    
-    @set_ev_cls([ofp_event.EventOFPStateChange, ofp_event.EventOFPErrorMsg],
-                [MAIN_DISPATCHER, DEAD_DISPATCHER])
-    def state_change_handler(self, ev):
-        if isinstance(ev, ofp_event.EventOFPStateChange):
-            if ev.state == DEAD_DISPATCHER:
-                self.logger.info("Switch disconnected: %s", ev.datapath.id)
+    if reroute:
+        @set_ev_cls([ofp_event.EventOFPStateChange, ofp_event.EventOFPErrorMsg],
+                    [MAIN_DISPATCHER, DEAD_DISPATCHER])
+        def state_change_handler(self, ev):
+            if isinstance(ev, ofp_event.EventOFPStateChange):
+                if ev.state == DEAD_DISPATCHER:
+                    self.logger.info("Switch disconnected: %s", ev.datapath.id)
+                    self.clean_all_flows()
+
+        @set_ev_cls( ofp_event.EventOFPPortStatus, MAIN_DISPATCHER)
+        def port_status_handler(self, ev):
+            msg = ev.msg
+            datapath = msg.datapath
+            ofproto = datapath.ofproto
+
+            if msg.reason in [ofproto.OFPPR_DELETE, ofproto.OFPPR_MODIFY]:
+             # cancella le regole e ricalcola
                 self.clean_all_flows()
+            return
+        def clean_all_flows(self):
+            # Get all switches in the network
+            switch_list = get_switch(self, None)
+            for switch in switch_list:
+                datapath = switch.dp
+                self.clean_flows(datapath)
 
-    @set_ev_cls(ofp_event.EventOFPPortStatus, MAIN_DISPATCHER)
-    def port_status_handler(self, ev):
-        msg = ev.msg
-        datapath = msg.datapath
-        ofproto = datapath.ofproto
+        def clean_flows(self, datapath):
+            ofproto = datapath.ofproto
+            parser = datapath.ofproto_parser
 
-        if msg.reason in [ofproto.OFPPR_DELETE, ofproto.OFPPR_MODIFY]:
-            # cancella le regole e ricalcola
-             self.clean_all_flows()
-        return
-    def clean_all_flows(self):
-        # Get all switches in the network
-        switch_list = get_switch(self, None)
-        for switch in switch_list:
-            datapath = switch.dp
-            self.clean_flows(datapath)
-
-    def clean_flows(self, datapath):
-        ofproto = datapath.ofproto
-        parser = datapath.ofproto_parser
-
-        # Delete flow entries with priority 10 and cookie 10
-        mod = parser.OFPFlowMod(
-            datapath=datapath,
-            command=ofproto.OFPFC_DELETE,
-            out_port=ofproto.OFPP_ANY,
-            out_group=ofproto.OFPG_ANY,
-            priority=10,
-            cookie=1,
-            cookie_mask=0xFFFFFFFFFFFFFFFF
-        )
-        datapath.send_msg(mod)    
+            # Delete flow entries with cookie 1
+            mod = parser.OFPFlowMod(
+                datapath=datapath,
+                command=ofproto.OFPFC_DELETE,
+                out_port=ofproto.OFPP_ANY,
+                out_group=ofproto.OFPG_ANY,
+                cookie=1,
+                cookie_mask=0xFFFFFFFFFFFFFFFF
+            )
+            datapath.send_msg(mod)    
     
     def proxy_arp(self, msg):
         datapath = msg.datapath
