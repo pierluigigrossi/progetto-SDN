@@ -338,6 +338,7 @@ class HopByHopSwitch(app_manager.RyuApp):
                 command=ofproto.OFPFC_DELETE,
                 out_port=ofproto.OFPP_ANY,
                 out_group=ofproto.OFPG_ANY,
+                priority=10,
                 cookie=1,
                 cookie_mask=0xFFFFFFFFFFFFFFFF
             )
