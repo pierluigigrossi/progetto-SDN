@@ -16,7 +16,8 @@ from ryu.app.ofctl.api import get_datapath
 from collections import defaultdict
 import networkx as nx
 import time
-import csv  
+import csv 
+import sys
 
 d = defaultdict(list)
 X = 3
@@ -24,10 +25,15 @@ T = 10
 reset = True
 approx = False
 report = True
+report_file='ryu_tcp.csv'
+
+if X < 0 and (not X.isdigit()) or T <= 0 :
+    print ('Valori T o X non validi')
+    sys.exit(1)
 
 if report is True :
     header = ['Accepted or not','timestamp','IP_SRC', 'IP_DST', 'PORT_SRC', 'PORT_DST']
-    with open('ryu_tcp.csv', 'a', encoding='UTF8', newline='') as f:
+    with open(report_file, 'a', encoding='UTF8', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(header)
     f.close()
@@ -178,7 +184,7 @@ class HopByHopSwitch(app_manager.RyuApp):
                     #scarta pacchetto oltre soglia, più di X SYN in tempo minore di T
                 if i > X  and delta_t <= T:
                     if report is True :
-                        with open('ryu_tcp.csv', 'a', encoding='UTF8', newline='') as f:
+                        with open(report_file, 'a', encoding='UTF8', newline='') as f:
                             writer = csv.writer(f)
                             writer.writerow(['X',time.ctime(t),pkt_ipv4.src, pkt_ipv4.dst, pkt_tcp.src_port, pkt_tcp.dst_port])
                         f.close()
@@ -231,7 +237,7 @@ class HopByHopSwitch(app_manager.RyuApp):
                 )
                 datapath.send_msg(out)
                 if report is True :
-                    with open('ryu_tcp.csv', 'a', encoding='UTF8', newline='') as f:
+                    with open(report_file, 'a', encoding='UTF8', newline='') as f:
                         writer = csv.writer(f)
                         writer.writerow(['A',time.ctime(t),pkt_ipv4.src, pkt_ipv4.dst, pkt_tcp.src_port, pkt_tcp.dst_port])
                         f.close()
