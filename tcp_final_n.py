@@ -303,20 +303,12 @@ class HopByHopSwitch(app_manager.RyuApp):
 
         return
     if reroute:
-        @set_ev_cls([ofp_event.EventOFPStateChange, ofp_event.EventOFPErrorMsg],
-                    [MAIN_DISPATCHER, DEAD_DISPATCHER])
-        def state_change_handler(self, ev):
-            if isinstance(ev, ofp_event.EventOFPStateChange):
-                if ev.state == DEAD_DISPATCHER:
-                    self.logger.info("Switch disconnected: %s", ev.datapath.id)
-                    self.clean_all_flows()
-
         @set_ev_cls( ofp_event.EventOFPPortStatus, MAIN_DISPATCHER)
         def port_status_handler(self, ev):
             msg = ev.msg
             datapath = msg.datapath
             ofproto = datapath.ofproto
-
+            self.logger.info("Port status change")
             #if msg.reason in [ofproto.OFPPR_DELETE, ofproto.OFPPR_MODIFY]:
              # porta rimossa
              # cancella le regole e ricalcola
