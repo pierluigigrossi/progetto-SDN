@@ -12,7 +12,6 @@ from ryu.ofproto import ofproto_v1_3
 from ryu.topology import event, switches
 from ryu.topology.api import get_all_switch, get_all_link, get_all_host,get_switch
 from ryu.lib.packet import packet, ethernet, ether_types, arp, tcp,ipv4
-from ryu.app.ofctl.api import get_datapath
 from collections import defaultdict
 import networkx as nx
 import time
@@ -231,6 +230,16 @@ class HopByHopSwitch(app_manager.RyuApp):
                         writer = csv.writer(f)
                         writer.writerow(['A',time.ctime(t),pkt_ipv4.src, pkt_ipv4.dst, pkt_tcp.src_port, pkt_tcp.dst_port])
                         f.close()
+        #packet out 
+            actions = [ parser.OFPActionOutput(output_port) ]
+            out = parser.OFPPacketOut(
+                datapath=datapath,
+                buffer_id=msg.buffer_id,
+                in_port=in_port,
+                actions=actions,
+                data=msg.data
+            )
+            datapath.send_msg(out)
             #installo regola flusso TCP per instradamento diretto            
             match = parser.OFPMatch(
                 eth_dst=destination_mac, 
@@ -257,16 +266,6 @@ class HopByHopSwitch(app_manager.RyuApp):
                 #timer
                 )
             datapath.send_msg(mod)
-            #packetout diretto sulla destinazione
-            datapath = get_datapath(self, dst_dpid)
-            out = parser.OFPPacketOut(
-                datapath=datapath,
-                buffer_id=ofproto.OFP_NO_BUFFER,
-                in_port=ofproto.OFPP_CONTROLLER,
-                actions=[parser.OFPActionOutput(dst_port)],
-                data=msg.data
-            )
-            datapath.send_msg(out)
             #regola install
             return
         
