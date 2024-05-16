@@ -270,7 +270,7 @@ class HopByHopSwitch(app_manager.RyuApp):
             #regola install
             return
         
-        # inoltra il pacchetto corrente & learning hop by hop per non SYN
+        # inoltra il pacchetto corrente & learning hop by hop per non TCP
         actions = [ parser.OFPActionOutput(output_port) ]
         out = parser.OFPPacketOut(
             datapath=datapath,
@@ -294,7 +294,7 @@ class HopByHopSwitch(app_manager.RyuApp):
         mod = parser.OFPFlowMod(
             datapath=datapath,
             cookie=1,
-            priority=10,            #il primo pacchetto non tcp viene passato con priorità minore dei syn ma maggiore di tutto il controllore
+            priority=10,
             match=match,
             instructions=inst,
             buffer_id=msg.buffer_id
