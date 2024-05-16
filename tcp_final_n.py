@@ -280,7 +280,7 @@ class HopByHopSwitch(app_manager.RyuApp):
         )
         datapath.send_msg(out)
         
-        # aggiungi la regola per instradare direttamente i prossimi
+        # aggiungi la regola per instradare direttamente i prossimi non TCP
         match = parser.OFPMatch(
             eth_dst=destination_mac
             )
