@@ -1,0 +1,209 @@
+port target 5240
+17:26:31 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.40 port 51210 connected with 10.10.6.42 port 5240
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-7.0047 sec  17.8 MBytes  21.3 Mbits/sec
+17:26:39 fine 
+17:26:42 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.40 port 51216 connected with 10.10.6.42 port 5240
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-3.0058 sec  7.25 MBytes  20.2 Mbits/sec
+17:26:46 fine 
+17:26:54 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.40 port 51220 connected with 10.10.6.42 port 5240
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-1.0258 sec  4.00 MBytes  32.7 Mbits/sec
+17:26:56 fine 
+17:26:59 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.40 port 51224 connected with 10.10.6.42 port 5240
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-3.9557 sec  3.75 MBytes  7.95 Mbits/sec
+17:27:05 fine 
+17:27:12 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.40 port 51228 connected with 10.10.6.42 port 5240
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-6.5174 sec  10.6 MBytes  13.7 Mbits/sec
+17:27:20 fine 
+17:27:22 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.40 port 51230 connected with 10.10.6.42 port 5240
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-9.0274 sec  25.6 MBytes  23.8 Mbits/sec
+17:27:32 fine 
+17:27:34 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.40 port 51234 connected with 10.10.6.42 port 5240
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-8.0292 sec  19.9 MBytes  20.8 Mbits/sec
+17:27:43 fine 
+17:27:47 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.40 port 51238 connected with 10.10.6.42 port 5240
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-5.0444 sec  13.0 MBytes  21.6 Mbits/sec
+17:27:53 fine 
+17:27:56 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.40 port 51240 connected with 10.10.6.42 port 5240
+client await server close failed: Resource temporarily unavailable
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-6.8870 sec  2.72 MBytes  3.32 Mbits/sec
+17:28:10 fine 
+17:28:13 inizio
+connect failed: Operation now in progress
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+17:28:18 fine 
+17:28:24 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.40 port 51248 connected with 10.10.6.42 port 5240
+client await server close failed: Resource temporarily unavailable
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-11.7574 sec  7.68 MBytes  5.48 Mbits/sec
+17:28:47 fine 
+17:28:52 inizio
+connect failed: Operation now in progress
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+17:29:00 fine 
+17:29:10 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.40 port 51262 connected with 10.10.6.42 port 5240
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-10.0109 sec  42.9 MBytes  35.9 Mbits/sec
+17:29:21 fine 
+17:29:28 inizio
+connect failed: Operation now in progress
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+17:29:33 fine 
+17:29:40 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.40 port 51272 connected with 10.10.6.42 port 5240
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-8.0375 sec  23.0 MBytes  24.0 Mbits/sec
+17:29:49 fine 
+17:29:51 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.40 port 51278 connected with 10.10.6.42 port 5240
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-2.0416 sec  5.25 MBytes  21.6 Mbits/sec
+17:29:54 fine 
+17:30:02 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.40 port 51280 connected with 10.10.6.42 port 5240
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-5.0107 sec  21.0 MBytes  35.2 Mbits/sec
+17:30:08 fine 
+17:30:18 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.40 port 51286 connected with 10.10.6.42 port 5240
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-4.0051 sec  7.25 MBytes  15.2 Mbits/sec
+17:30:23 fine 
+17:30:24 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.40 port 51288 connected with 10.10.6.42 port 5240
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-2.0229 sec  2.88 MBytes  11.9 Mbits/sec
+17:30:27 fine 
+17:30:35 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.40 port 51290 connected with 10.10.6.42 port 5240
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-7.0024 sec  9.38 MBytes  11.2 Mbits/sec
+17:30:43 fine 
+17:30:54 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.40 port 51294 connected with 10.10.6.42 port 5240
+write failed: Connection reset by peer
+shutdown failed: Transport endpoint is not connected
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-1.1034 sec  3.94 MBytes  30.0 Mbits/sec
+17:30:56 fine 
+17:31:04 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+17:31:05 fine 
+17:31:11 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+17:31:12 fine 
+17:31:13 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.42, TCP port 5240
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+17:31:14 fine 

@@ -1,0 +1,196 @@
+port target 5242
+16:26:43 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.42 port 44374 connected with 10.10.6.40 port 5242
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-7.0733 sec  17.3 MBytes  20.5 Mbits/sec
+16:26:51 fine 
+16:27:00 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.42 port 44380 connected with 10.10.6.40 port 5242
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-9.0007 sec  16.0 MBytes  14.9 Mbits/sec
+16:27:10 fine 
+16:27:14 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.42 port 44384 connected with 10.10.6.40 port 5242
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-9.0399 sec  26.0 MBytes  24.1 Mbits/sec
+16:27:24 fine 
+16:27:32 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.42 port 44388 connected with 10.10.6.40 port 5242
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-9.0409 sec  20.0 MBytes  18.6 Mbits/sec
+16:27:43 fine 
+16:27:53 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.42 port 44392 connected with 10.10.6.40 port 5242
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-3.0043 sec  9.63 MBytes  26.9 Mbits/sec
+16:27:57 fine 
+16:28:04 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.42 port 44398 connected with 10.10.6.40 port 5242
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-8.0053 sec  18.1 MBytes  19.0 Mbits/sec
+16:28:16 fine 
+16:28:23 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.42 port 44402 connected with 10.10.6.40 port 5242
+client await server close failed: Resource temporarily unavailable
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-9.2534 sec  3.16 MBytes  2.86 Mbits/sec
+16:28:43 fine 
+16:28:44 inizio
+connect failed: Operation now in progress
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:28:49 fine 
+16:28:57 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:28:58 fine 
+16:28:59 inizio
+connect failed: Operation now in progress
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:29:03 fine 
+16:29:12 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.42 port 44426 connected with 10.10.6.40 port 5242
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-5.0205 sec  12.4 MBytes  20.7 Mbits/sec
+16:29:18 fine 
+16:29:21 inizio
+connect failed: Operation now in progress
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:29:23 fine 
+16:29:26 inizio
+connect failed: Operation now in progress
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:29:31 fine 
+16:29:33 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.42 port 44440 connected with 10.10.6.40 port 5242
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-1.0278 sec  5.13 MBytes  41.8 Mbits/sec
+16:29:36 fine 
+16:29:40 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:29:41 fine 
+16:29:42 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:29:43 fine 
+16:29:46 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:29:47 fine 
+16:29:48 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:29:49 fine 
+16:29:52 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:29:53 fine 
+16:30:00 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:30:01 fine 
+16:30:07 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.42 port 44464 connected with 10.10.6.40 port 5242
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-3.3390 sec  6.00 MBytes  15.1 Mbits/sec
+16:30:12 fine 
+16:30:13 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.42 port 44466 connected with 10.10.6.40 port 5242
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-7.0041 sec  21.6 MBytes  25.9 Mbits/sec
+16:30:21 fine 
+16:30:30 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.42 port 44470 connected with 10.10.6.40 port 5242
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-9.0465 sec  28.0 MBytes  26.0 Mbits/sec
+16:30:40 fine 
+16:30:46 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5242
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.42 port 44474 connected with 10.10.6.40 port 5242
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-7.0040 sec  26.4 MBytes  31.6 Mbits/sec
+16:30:54 fine 

@@ -1,0 +1,278 @@
+port target 5241
+16:26:30 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.41 port 36232 connected with 10.10.6.40 port 5241
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-9.0160 sec  23.8 MBytes  22.1 Mbits/sec
+16:26:40 fine 
+16:26:50 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.41 port 36238 connected with 10.10.6.40 port 5241
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-10.0180 sec  27.1 MBytes  22.7 Mbits/sec
+16:27:02 fine 
+16:27:07 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.41 port 36244 connected with 10.10.6.40 port 5241
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-9.0324 sec  18.6 MBytes  17.3 Mbits/sec
+16:27:17 fine 
+16:27:27 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.41 port 36248 connected with 10.10.6.40 port 5241
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-3.0562 sec  7.88 MBytes  21.6 Mbits/sec
+16:27:31 fine 
+16:27:35 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.41 port 36252 connected with 10.10.6.40 port 5241
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-10.0169 sec  23.1 MBytes  19.4 Mbits/sec
+16:27:46 fine 
+16:27:48 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.41 port 36258 connected with 10.10.6.40 port 5241
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-8.0193 sec  18.1 MBytes  19.0 Mbits/sec
+16:27:57 fine 
+16:28:07 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.41 port 36262 connected with 10.10.6.40 port 5241
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-7.0873 sec  10.1 MBytes  12.0 Mbits/sec
+16:28:16 fine 
+16:28:22 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.41 port 36264 connected with 10.10.6.40 port 5241
+client await server close failed: Resource temporarily unavailable
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-5.4785 sec   788 KBytes  1.18 Mbits/sec
+16:28:36 fine 
+16:28:46 inizio
+connect failed: Operation now in progress
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:28:52 fine 
+16:28:53 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:28:55 fine 
+16:29:01 inizio
+connect failed: Operation now in progress
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:29:08 fine 
+16:29:14 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.41 port 36280 connected with 10.10.6.40 port 5241
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-3.0391 sec  7.13 MBytes  19.7 Mbits/sec
+16:29:18 fine 
+16:29:22 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:29:23 fine 
+16:29:33 inizio
+connect failed: Operation now in progress
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:29:36 fine 
+16:29:40 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:29:41 fine 
+16:29:44 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:29:45 fine 
+16:29:50 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:29:51 fine 
+16:29:56 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:29:58 fine 
+16:30:06 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.41 port 36300 connected with 10.10.6.40 port 5241
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-8.0007 sec  15.6 MBytes  16.4 Mbits/sec
+16:30:15 fine 
+16:30:16 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.41 port 36304 connected with 10.10.6.40 port 5241
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-9.0948 sec  18.1 MBytes  16.7 Mbits/sec
+16:30:26 fine 
+16:30:29 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.41 port 36308 connected with 10.10.6.40 port 5241
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-5.0186 sec  16.8 MBytes  28.0 Mbits/sec
+16:30:36 fine 
+16:30:42 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.41 port 36314 connected with 10.10.6.40 port 5241
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-1.0270 sec  2.75 MBytes  22.5 Mbits/sec
+16:30:44 fine 
+16:30:45 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.41 port 36318 connected with 10.10.6.40 port 5241
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-3.0589 sec  6.63 MBytes  18.2 Mbits/sec
+16:30:50 fine 
+16:30:58 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.41 port 36324 connected with 10.10.6.40 port 5241
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-9.0195 sec  33.9 MBytes  31.5 Mbits/sec
+16:31:08 fine 
+16:31:16 inizio
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: 43.8 KByte (default)
+------------------------------------------------------------
+[  3] local 10.10.6.41 port 36330 connected with 10.10.6.40 port 5241
+[ ID] Interval       Transfer     Bandwidth
+[  3] 0.0000-1.0019 sec  4.50 MBytes  37.7 Mbits/sec
+16:31:18 fine 
+16:31:21 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:31:22 fine 
+16:31:32 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:31:33 fine 
+16:31:43 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:31:44 fine 
+16:31:46 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:31:47 fine 
+16:31:50 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:31:51 fine 
+16:31:57 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:31:58 fine 
+16:32:04 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:32:05 fine 
+16:32:14 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:32:15 fine 
+16:32:18 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
+16:32:20 fine 
+16:32:21 inizio
+connect failed: Connection refused
+------------------------------------------------------------
+Client connecting to 10.10.6.40, TCP port 5241
+TCP window size: -1.000 Byte (default)
+------------------------------------------------------------
