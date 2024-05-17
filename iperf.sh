@@ -3,7 +3,7 @@
 t_min=3
 t_max=15
 sleep_min=1
-sleep_max=20
+sleep_max=10
 n_hosts=3
 hosts_IP=("10.0.0.1" "10.0.0.2" "10.0.0.3" "10.0.0.4")
 #elimino l'host su cui sono dalla lista dei target
