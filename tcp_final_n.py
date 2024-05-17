@@ -230,46 +230,36 @@ class HopByHopSwitch(app_manager.RyuApp):
                         writer = csv.writer(f)
                         writer.writerow(['A',time.ctime(t),pkt_ipv4.src, pkt_ipv4.dst, pkt_tcp.src_port, pkt_tcp.dst_port])
                         f.close()
-        #packet out 
-            actions = [ parser.OFPActionOutput(output_port) ]
-            out = parser.OFPPacketOut(
-                datapath=datapath,
-                buffer_id=msg.buffer_id,
-                in_port=in_port,
-                actions=actions,
-                data=msg.data
-            )
-            datapath.send_msg(out)
-            #installo regola flusso TCP per instradamento diretto            
-            match = parser.OFPMatch(
-                eth_dst=destination_mac, 
-                eth_src=source_mac,
-                eth_type=0x0800, #ipv4
-                ipv4_src=pkt_ipv4.src,
-                ipv4_dst=pkt_ipv4.dst,        
-                ip_proto=6,          #tcp
-                tcp_dst=pkt_tcp.dst_port,
-                tcp_src=pkt_tcp.src_port
-             )
-            inst = [
-                    parser.OFPInstructionActions(
-                    ofproto.OFPIT_APPLY_ACTIONS,
-                    [ parser.OFPActionOutput(output_port) ]
-                    )
-            ]
-            mod = parser.OFPFlowMod(
-                datapath=datapath,
-                priority=30,
-                match = match,
-                instructions=inst,
-                idle_timeout=5
-                #timer
+            #installo regola flusso TCP per instradamento diretto se sono sulla sorgente      
+            if datapath.id == src_dpid:
+                match = parser.OFPMatch(
+                    eth_dst=destination_mac, 
+                    eth_src=source_mac,
+                    eth_type=0x0800, #ipv4
+                    ipv4_src=pkt_ipv4.src,
+                    ipv4_dst=pkt_ipv4.dst,        
+                    ip_proto=6,          #tcp
+                    tcp_dst=pkt_tcp.dst_port,
+                    tcp_src=pkt_tcp.src_port
                 )
-            datapath.send_msg(mod)
-            #regola install
-            return
+                inst = [
+                        parser.OFPInstructionActions(
+                        ofproto.OFPIT_APPLY_ACTIONS,
+                        [ parser.OFPActionOutput(output_port) ]
+                        )
+                ]
+                mod = parser.OFPFlowMod(
+                    datapath=datapath,
+                    priority=30,
+                    match = match,
+                    instructions=inst,
+                    idle_timeout=5
+                    #timer
+                    )
+                datapath.send_msg(mod)
+                #regola install
         
-        # inoltra il pacchetto corrente & learning hop by hop per non TCP
+        # inoltra il pacchetto corrente & learning hop by hop 
         actions = [ parser.OFPActionOutput(output_port) ]
         out = parser.OFPPacketOut(
             datapath=datapath,
@@ -279,8 +269,8 @@ class HopByHopSwitch(app_manager.RyuApp):
             data=msg.data
         )
         datapath.send_msg(out)
-        
-        # aggiungi la regola per instradare direttamente i prossimi non TCP
+
+        # aggiungi la regola per instradare direttamente i prossimi
         match = parser.OFPMatch(
             eth_dst=destination_mac
             )
@@ -290,10 +280,16 @@ class HopByHopSwitch(app_manager.RyuApp):
                 [ parser.OFPActionOutput(output_port) ]
             )
         ]
+
+        if datapath.id != src_dpid:
+            priority = 40
+        else :
+            priority = 10
+        
         mod = parser.OFPFlowMod(
             datapath=datapath,
             cookie=1,
-            priority=10,
+            priority=priority,
             match=match,
             instructions=inst,
             buffer_id=msg.buffer_id
