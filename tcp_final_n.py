@@ -18,16 +18,19 @@ import time
 import csv 
 import sys
 
-d = defaultdict(list)
-X = 3
-T = 10
-reset = True
-reroute= True
-approx = False
-report = True
+#costanti da impostare 
+X = 3 #numero connessioni TCP
+T = 10 #in intervallo di tempo
+reset = True #manda RST/ACK
+reroute= True #resileinte a guasti
+approx = False #conteggio approssimato
+report = True #salva csv
 report_file='ryu_tcp.csv'
 
-#controllo valori soglir 
+
+#struttura dati per salvare destinazioni dei SYN
+d = defaultdict(list)
+#controllo valori soglie
 if X < 0 or T < 0 :
     print ('Valori T o X non validi')
     sys.exit(1)
@@ -164,7 +167,7 @@ class HopByHopSwitch(app_manager.RyuApp):
                         d[destination_mac] =[1,t]
                     else :
                         d[destination_mac][0] = d[destination_mac][0]+1
-                    #calcolo delta come differenza tra tempo syn attuale e primo
+                    #calcolo delta come differenza tra tempo syn attuale e primo SYN
                     delta_t = t-d[destination_mac][1]
                     #reset (come fosse primo SYN), oltre la soglia 
                     if delta_t > T :
@@ -295,10 +298,8 @@ class HopByHopSwitch(app_manager.RyuApp):
             )
         ]
         #Solo se l'host sorgente non è direttamente connesso allo switch  
-        #scavalco le regole che mi mandano tutto il traffico TCP al controllore 
-        #per l'host destinazione
-        #Sullo switch dove è connesso l'host sorgente priorità più bassa:
-        #arriva solo traffico non TCP
+        #scavalco le regole che mi mandano tutto il traffico TCP al controllore
+        #faccio inoltro diretto
         if datapath.id != src_dpid:
             priority = 40
         else :
@@ -322,9 +323,6 @@ class HopByHopSwitch(app_manager.RyuApp):
             datapath = msg.datapath
             ofproto = datapath.ofproto
             self.logger.info("Port status change")
-            #if msg.reason in [ofproto.OFPPR_DELETE, ofproto.OFPPR_MODIFY]:
-             # porta rimossa
-             # cancella le regole e ricalcola
             self.clean_all_flows()
             return
         def clean_all_flows(self):
