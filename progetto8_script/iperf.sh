@@ -1,10 +1,14 @@
 #!/bin/bash
 #parametri
+#durate
 t_min=3
-t_max=15
+t_max=10
+#intervalli
 sleep_min=1
 sleep_max=10
 hosts_IP=("10.10.6.40" "10.10.6.41" "10.10.6.42")
+
+#assunzione client IPv4 sulla stessa /24
 #elimino l'host su cui sono dalla lista dei target
 myip=$(ip -f inet addr show  | sed -En -e 's/.*inet ([0-9.]+).*/\1/p' | grep -F  10.10.6.)
 
@@ -18,6 +22,7 @@ done
 hosts_IP=("${new_array[@]}")
 unset new_array
 #partenza server iperf
+#porte distinte 5200 + (parte host dell'IP da cui riceverò connessioni)
 
 for host in "${hosts_IP[@]}"; do
     h_part=$(echo $host | cut -d . -f 4)
