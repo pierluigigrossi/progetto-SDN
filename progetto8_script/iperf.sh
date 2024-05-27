@@ -1,7 +1,7 @@
 #!/bin/bash
 #parametri
 #durate
-t_min=3
+t_min=1
 t_max=10
 #intervalli
 sleep_min=1
