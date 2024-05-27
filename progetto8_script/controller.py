@@ -23,7 +23,7 @@ import sys
 
 #costanti da impostare 
 X = 3 #numero connessioni TCP
-T = 10 #in intervallo di tempo
+T = 10 #in intervallo di tempo in secondi
 reset = True #manda RST/ACK
 reroute= True #ricalcola tutto se un link cambia stato
 approx = False #conteggio approssimato
@@ -172,13 +172,14 @@ class HopByHopSwitch(app_manager.RyuApp):
                         d[destination_mac][0] = d[destination_mac][0]+1
                     #calcolo delta come differenza tra tempo syn attuale e primo SYN
                     delta_t = t-d[destination_mac][1]
+                    #stampo 
+                    print(pkt_ipv4.dst,':',pkt_tcp.dst_port,'Elapsed time:',delta_t)
                     #reset (come fosse primo SYN), oltre la soglia 
                     if delta_t > T :
                         d[destination_mac] =[1,t]
+                        delta_t = 0
                     #salvo
                     i = d[destination_mac][0]
-                    #stampo 
-                    print(pkt_ipv4.dst,':',pkt_tcp.dst_port,'Elapsed time:',delta_t)
                 #soluzione esatta
                 else :
                     #riconto ad ogni SYN tutto il delta
