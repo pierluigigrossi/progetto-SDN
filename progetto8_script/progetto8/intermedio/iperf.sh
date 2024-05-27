@@ -39,7 +39,7 @@ echo "port target $port"
 for host in "${hosts_IP[@]}"; do
     #per ciascun host tranne quello su cui sono,
     #fai loop  iperf ad intervalli causali (wait),
-    # di deurata casuale (t)
+    # di durata casuale (t)
     echo "port target $port" >> "$myip->$host.txt"
     while true; do
         wait=$(($RANDOM%($sleep_max-$sleep_min+1)+$sleep_min))
